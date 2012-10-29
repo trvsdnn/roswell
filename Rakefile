@@ -1,20 +1,7 @@
-$LOAD_PATH.unshift(File.join(Rake.original_dir, 'lib'))
+#!/usr/bin/env rake
+# Add your own tasks in files placed in lib/tasks ending in .rake,
+# for example lib/tasks/capistrano.rake, and they will automatically be available to Rake.
 
-task :environment do
-  require File.expand_path('../config/environment', __FILE__)
-end
+require File.expand_path('../config/application', __FILE__)
 
-task :setup do
-  system "cp -f config/config.yml.example config/config.yml"
-  puts "\033[32mSetup is finished\033[0m"
-end
-
-namespace :deploy do
-  task :staging do
-    exec "screwcap config/deploy/staging.rb deploy"
-  end
-
-  task :production do
-    exec "screwcap config/deploy/production.rb deploy"
-  end
-end
+Roswell::Application.load_tasks
