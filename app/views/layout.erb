@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="/css/application.css" type="text/css" media="screen">
+    <script type="text/javascript" src="/js/jquery.js"></script>
+    <script type="text/javascript" src="/js/main.js"></script>
+
+    <title><%= yield_content(:title).empty? ? 'Default' : yield_content(:title) %> | Template Title</title>
+    <meta name="description" value="<%= yield_content(:description).empty? ? '' : yield_content(:description) %>" />
+  </head>
+  <body>
+    <div id="header">
+    </div>
+    <div id="container">
+      <%= yield %>
+    </div>
+  </body>
+</html>
