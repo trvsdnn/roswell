@@ -1,0 +1,13 @@
+<div class="page-header">
+  <h2>Create a New Note</h2>
+</div>
+
+<%= form_for @note do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+
+  <%= f.label :body %>
+  <%= f.text_area :body %>
+
+  <button type="submit" class="btn">Create Note</button>
+<% end %>

@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.8'
+gem 'strong_parameters', '~> 0.1.5'
 
 gem 'mongoid', '~> 2.5.1'
 gem 'bson_ext', '~> 1.7.0'
