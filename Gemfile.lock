@@ -37,6 +37,8 @@ GEM
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    faker (1.1.2)
+      i18n (~> 0.5)
     hike (1.2.1)
     i18n (0.6.1)
     journey (1.0.4)
@@ -112,6 +114,7 @@ PLATFORMS
 DEPENDENCIES
   bcrypt-ruby (~> 3.0.0)
   bson_ext (~> 1.7.0)
+  faker (~> 1.1.2)
   jquery-rails
   mongoid (~> 2.5.1)
   rails (= 3.2.8)
