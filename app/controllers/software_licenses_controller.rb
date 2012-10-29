@@ -1,4 +1,8 @@
 class SoftwareLicensesController < ApplicationController
+  def index
+    @licenses = SoftwareLicense.all
+  end
+
   def new
     @license = SoftwareLicense.new
   end
@@ -14,6 +18,10 @@ class SoftwareLicensesController < ApplicationController
   end
 
   def show
+    @license = SoftwareLicense.find(params[:id])
+  end
+
+  def edit
     @license = SoftwareLicense.find(params[:id])
   end
 
