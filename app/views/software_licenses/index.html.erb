@@ -1,0 +1,24 @@
+<div id='licenses'>
+  <table class='table table-striped table-bordered table-condensed'>
+    <thead>
+      <tr>
+        <th class='title'>Title</th>
+        <th class='license_key'>Key</th>
+        <th class='licensed_to'>Owner</th>
+        <th class='created_at'>Created</th>
+        <th class='updated_at'>Updated</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @licenses.each do |license| %>
+      <tr class='<%= cycle('even', 'odd') %>'>
+        <td><%= license.title %></td>
+        <td><%= license.license_key %></td>
+        <td><%= license.licensed_to %></td>
+        <td><%= license.created_at %></td>
+        <td><%= license.updated_at %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

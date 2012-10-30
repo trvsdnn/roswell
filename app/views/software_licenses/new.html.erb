@@ -1,0 +1,19 @@
+<div class="page-header">
+  <h2>Add a New License</h2>
+</div>
+
+<%= form_for @license do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+
+  <%= f.label :license_key %>
+  <%= f.text_field :license_key %>
+
+  <%= f.label :licensed_to %>
+  <%= f.text_field :licensed_to %>
+
+  <%= f.label :comments %>
+  <%= f.text_area :license_key %>
+
+  <button type="submit" class="btn">Add License</button>
+<% end %>
