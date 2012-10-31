@@ -13,7 +13,7 @@ class SoftwareLicensesController < ApplicationController
     @license = SoftwareLicense.new(software_license_params)
 
     if @license.save
-      redirect @license, :notice => 'Note created'
+      redirect_to @license, :notice => 'Note created'
     else
       render :new
     end
@@ -30,6 +30,12 @@ class SoftwareLicensesController < ApplicationController
   private
 
   def software_license_params
-    params.permit(:software_license)
+    params.require(:software_license).permit(
+      :title,
+      :license_key,
+      :license_to,
+      :comments,
+      :tag_list
+    )
   end
 end

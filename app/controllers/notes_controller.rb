@@ -5,6 +5,11 @@ class NotesController < ApplicationController
     @notes = Note.all
   end
 
+  def tagged
+    @notes = Note.tagged_with(params[:tag])
+    render :template => 'notes/index'
+  end
+
   def new
     @note = Note.new
   end
@@ -13,7 +18,7 @@ class NotesController < ApplicationController
     @note = Note.new(note_params)
 
     if @note.save
-      redirect @note, :notice => 'Note created'
+      redirect_to @note, :notice => 'Note created'
     else
       render :new
     end
@@ -30,6 +35,6 @@ class NotesController < ApplicationController
   private
 
   def note_params
-    params.permit(:note)
+    params.require(:note).permit(:title, :body, :tag_list)
   end
 end

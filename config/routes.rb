@@ -1,7 +1,7 @@
 Roswell::Application.routes.draw do
-  get 'signup', to: 'users#new', as: 'signup'
-  get 'login', to: 'sessions#new', as: 'login'
-  get 'logout', to: 'sessions#destroy', as: 'logout'
+  get 'signup', :to => 'users#new', :as => 'signup'
+  get 'login', :to => 'sessions#new', :as => 'login'
+  get 'logout', :to => 'sessions#destroy', :as => 'logout'
 
   resources :sessions
   resources :users
@@ -9,6 +9,7 @@ Roswell::Application.routes.draw do
   resources :accounts
   resources :software_licenses
   resources :notes
+  get 'notes/tag/:tag', :to => 'notes#tagged', :as => 'tagged_notes'
 
   root :to => 'notes#index'
 end

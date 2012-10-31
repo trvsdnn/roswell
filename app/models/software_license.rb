@@ -1,5 +1,6 @@
 class SoftwareLicense
   include Mongoid::Document
+  include Mongoid::Document::Taggable
   include Mongoid::Timestamps
 
   field :title, :type => String
