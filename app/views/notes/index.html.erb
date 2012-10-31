@@ -3,6 +3,7 @@
     <thead>
       <tr>
         <th class='title'>Title</th>
+        <th class='actions'>Message</th>
         <th class='created_at'>Created</th>
         <th class='updated_at'>Updated</th>
       </tr>
@@ -11,6 +12,7 @@
     <% @notes.each do |note| %>
       <tr class='<%= cycle('even', 'odd') %>'>
         <td><%= note.title %></td>
+        <td><%= link_to 'View', note_path(note) %></td>
         <td><%= fmt_datetime(note.created_at) %></td>
         <td><%= fmt_datetime(note.updated_at) %></td>
       </tr>

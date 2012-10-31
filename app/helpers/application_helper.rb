@@ -10,13 +10,13 @@ module ApplicationHelper
       path_regexp = Regexp.new("\\A#{path}", true)
     end
 
-   # selected = request.path =~ path_regexp
+    selected = request.path =~ path_regexp
 
-   # if options.has_key?(:class) && selected
-   #   options[:class] << ' selected'
-   # elsif selected
-   #   options[:class] = 'selected'
-   # end
+    if options.has_key?(:class) && selected
+      options[:class] << ' selected'
+    elsif selected
+      options[:class] = 'selected'
+    end
 
     link_to name, path, options
   end

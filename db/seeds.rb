@@ -14,7 +14,7 @@ Mongoid.master.collections.reject { |c| c.name =~ /^system/}.each(&:drop)
   )
   Note.create(
     :title => Faker::Lorem.words.join(' '),
-    :body => Faker::Lorem.sentences(3),
+    :body => Faker::Lorem.sentences(3).join(' '),
     :updated_by_ip => Faker::Internet.ip_v4_address
   )
   SoftwareLicense.create(
