@@ -1,4 +1,6 @@
 class SoftwareLicensesController < ApplicationController
+  before_filter :authorize
+
   def index
     @licenses = SoftwareLicense.all
   end

@@ -25,3 +25,6 @@ Mongoid.master.collections.reject { |c| c.name =~ /^system/}.each(&:drop)
     :updated_by_ip => Faker::Internet.ip_v4_address
   )
 end
+
+
+User.create!(:email => 'accounts@50east.co', :password => 'asdfasdf')

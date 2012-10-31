@@ -1,4 +1,6 @@
 class NotesController < ApplicationController
+  before_filter :authorize
+
   def index
     @notes = Note.all
   end

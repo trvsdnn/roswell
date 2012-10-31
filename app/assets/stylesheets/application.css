@@ -11,3 +11,9 @@
  *= require_self
  *= require_tree .
  */
+
+ .user-session {
+   color: #999;
+   margin: 10px 0px;
+   text-align: right;
+ }

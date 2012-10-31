@@ -1,0 +1,17 @@
+<div class="page-header offset">
+  <h2>Login</h2>
+</div>
+
+<%= form_tag sessions_path, :class => 'span3 offset4' do %>
+  <div class="field">
+    <%= label_tag :email %>
+    <%= text_field_tag :email, params[:email] %>
+  </div>
+  <div class="field">
+    <%= label_tag :password %>
+    <%= password_field_tag :password %>
+  </div>
+
+  <hr />
+  <button type="submit" class="btn pull-right">Login</button>
+<% end %>
