@@ -11,8 +11,8 @@
     <% @notes.each do |note| %>
       <tr class='<%= cycle('even', 'odd') %>'>
         <td><%= note.title %></td>
-        <td><%= note.created_at %></td>
-        <td><%= note.updated_at %></td>
+        <td><%= fmt_datetime(note.created_at) %></td>
+        <td><%= fmt_datetime(note.updated_at) %></td>
       </tr>
     <% end %>
     </tbody>

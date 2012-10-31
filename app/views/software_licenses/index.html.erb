@@ -15,8 +15,8 @@
         <td><%= license.title %></td>
         <td><%= license.license_key %></td>
         <td><%= license.licensed_to %></td>
-        <td><%= license.created_at %></td>
-        <td><%= license.updated_at %></td>
+        <td><%= fmt_datetime(license.created_at) %></td>
+        <td><%= fmt_datetime(license.updated_at) %></td>
       </tr>
     <% end %>
     </tbody>
