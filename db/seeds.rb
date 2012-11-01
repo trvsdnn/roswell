@@ -9,11 +9,12 @@ license_tags = %w[oksm mko wmlk wokd omso okme xpol psdl]
 
 100.times do |i|
   GenericAccount.create(
-    :title => Faker::Lorem.words,
+    :title => Faker::Lorem.words.join(' '),
     :username => Faker::Internet.user_name,
-    :password => SecureRandom.hex(3),
+    :password => 'secret',
     :comments => [ Faker::Lorem.sentences(3), '' ].sample,
-    :updated_by_ip => Faker::Internet.ip_v4_address
+    :updated_by_ip => Faker::Internet.ip_v4_address,
+    :tags => (notes_tags.sample(rand(notes_tags.size)) if rand(5).zero?)
   )
   Note.create(
     :title => Faker::Lorem.words.join(' '),
@@ -32,4 +33,4 @@ license_tags = %w[oksm mko wmlk wokd omso okme xpol psdl]
 end
 
 
-User.create!(:email => 'accounts@50east.co', :password => 'asdfasdf')
+User.create!(:email => 'admin@example.com', :password => 'asdfasdf')

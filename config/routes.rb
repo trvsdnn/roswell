@@ -6,7 +6,11 @@ Roswell::Application.routes.draw do
   resources :sessions
   resources :users
 
-  resources :accounts
+  namespace :accounts do
+    resources :generic
+    get 'generic/tag/:tag', :to => 'generic#tagged', :as => 'tagged_generic'
+  end
+
   resources :software_licenses
   get 'software_licenses/tag/:tag', :to => 'software_licenses#tagged', :as => 'tagged_software_licenses'
   resources :notes
