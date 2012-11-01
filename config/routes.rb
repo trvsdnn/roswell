@@ -16,5 +16,9 @@ Roswell::Application.routes.draw do
   resources :notes
   get 'notes/tag/:tag', :to => 'notes#tagged', :as => 'tagged_notes'
 
+  namespace :admin do
+    resources :users
+  end
+
   root :to => 'notes#index'
 end
