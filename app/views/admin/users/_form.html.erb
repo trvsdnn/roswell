@@ -1,4 +1,4 @@
-<%= form_for @user do |f| %>
+<%= form_for [ :admin, @user ] do |f| %>
 
   <%= f.label :email %>
   <%= f.text_field :email %>

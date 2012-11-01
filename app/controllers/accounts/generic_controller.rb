@@ -2,7 +2,7 @@ class Accounts::GenericController < ApplicationController
   before_filter :authorize
 
   def index
-    @accounts = GenericAccount.all
+    @accounts = GenericAccount.any_of({ :tags.in => current_user.allowed_tags }, { :tags => [] })
     render :template => 'accounts/index'
   end
 

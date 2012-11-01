@@ -30,7 +30,7 @@ class Admin::UsersController < AdminController
     @user = User.find(params[:id])
 
     if @user.update_attributes(user_params)
-      redirect_to @user, :notice => 'User updated'
+      redirect_to admin_users_path, :notice => 'User updated'
     else
       render :edit
     end
