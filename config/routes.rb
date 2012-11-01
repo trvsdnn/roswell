@@ -8,6 +8,7 @@ Roswell::Application.routes.draw do
 
   resources :accounts
   resources :software_licenses
+  get 'software_licenses/tag/:tag', :to => 'software_licenses#tagged', :as => 'tagged_software_licenses'
   resources :notes
   get 'notes/tag/:tag', :to => 'notes#tagged', :as => 'tagged_notes'
 

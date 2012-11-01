@@ -5,6 +5,11 @@ class SoftwareLicensesController < ApplicationController
     @licenses = SoftwareLicense.all
   end
 
+  def tagged
+    @licenses = SoftwareLicense.tagged_with(params[:tag])
+    render :template => 'software_licenses/index'
+  end
+
   def new
     @license = SoftwareLicense.new
   end
@@ -13,7 +18,7 @@ class SoftwareLicensesController < ApplicationController
     @license = SoftwareLicense.new(software_license_params)
 
     if @license.save
-      redirect_to @license, :notice => 'Note created'
+      redirect_to @license, :notice => 'License added'
     else
       render :new
     end
@@ -33,7 +38,7 @@ class SoftwareLicensesController < ApplicationController
     params.require(:software_license).permit(
       :title,
       :license_key,
-      :license_to,
+      :licensed_to,
       :comments,
       :tag_list
     )

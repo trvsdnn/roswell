@@ -1,24 +1,39 @@
+<div class="page-header">
+  <h3><%= link_to_with_selected 'Add a new Software License', new_software_license_path %></h3>
+</div>
+
+<div class="row">
+  <div class="span2">
+    <ul class="nav nav-list">
+      <li class="nav-header">Tags</li>
+      <% SoftwareLicense.tags.each do |tag| %>
+        <li <%= active_class_if(tagged_software_licenses_path(:tag => tag)) %> ><%= link_to_with_selected "#{tag}", tagged_software_licenses_path(:tag => tag) %></li>
+      <% end %>
+    </ul>
+  </div
+</div>
+
+<div class="span10">
 <div id='licenses'>
   <table class='table table-striped table-bordered table-condensed'>
     <thead>
       <tr>
         <th class='title'>Title</th>
         <th class='license_key'>Key</th>
-        <th class='licensed_to'>Owner</th>
-        <th class='created_at'>Created</th>
-        <th class='updated_at'>Updated</th>
+        <th class='licensed_to'>Licensed to</th>
+        <th class='actions'>Details</th>
       </tr>
     </thead>
     <tbody>
     <% @licenses.each do |license| %>
-      <tr class='<%= cycle('even', 'odd') %>'>
+      <tr>
         <td><%= license.title %></td>
         <td><%= license.license_key %></td>
         <td><%= license.licensed_to %></td>
-        <td><%= fmt_datetime(license.created_at) %></td>
-        <td><%= fmt_datetime(license.updated_at) %></td>
+        <td><%= link_to 'View', software_license_path(license) %></td>
       </tr>
     <% end %>
     </tbody>
   </table>
+</div>
 </div>
