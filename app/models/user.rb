@@ -10,7 +10,7 @@ class User
   field :email, :type => String
   field :password_digest, :type => String
   field :last_login_at, :type => Time
-  field :allowed_tags, :type => Array
+  field :allowed_tags, :type => Array, :default => []
   field :admin, :type => Boolean, :default => false
 
   index :email, :unique => true
@@ -24,7 +24,9 @@ class User
 
   def set_allowed_tags
     if allowed_tags_list
-      self.allowed_tags = allowed_tags_list.split(',')
+      self.allowed_tags = allowed_tags_list.split(',').compact
+    else
+      self.allowed_tags = nil
     end
   end
 
