@@ -1,0 +1,33 @@
+<div class="span6">
+  <%= form_for @license do |f| %>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+
+    <%= f.label :tag_list, 'Group(s)' %>
+    <%= f.text_field :tag_list %>
+
+    <%= f.label :license_key %>
+    <%= f.text_field :license_key %>
+
+    <%= f.label :licensed_to %>
+    <%= f.text_field :licensed_to %>
+
+    <%= f.label :comments %>
+    <%= f.text_area :comments, :rows => 5 %>
+
+    <hr><button type="submit" class="btn"><%= @license.new_record? ? 'Create' : 'Update' %> License</button></hr>
+  <% end %>
+</div>
+
+<% if SoftwareLicense.tags.empty? %>
+  <p class="muted">No groups yet..</p>
+<% else %>
+  <div class="span3 offset3">
+    <p class="muted">Groups:</p>
+    <ul class="unstyled">
+      <% SoftwareLicense.tags.each do |tag| %>
+        <li class="muted"><%= "#{tag}" %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

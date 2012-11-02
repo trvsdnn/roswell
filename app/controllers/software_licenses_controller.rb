@@ -2,7 +2,11 @@ class SoftwareLicensesController < ApplicationController
   before_filter :authorize
 
   def index
-    @licenses = SoftwareLicense.any_of({ :tags.in => current_user.allowed_tags }, { :tags => [] })
+    if current_user.allowed_tags.nil?
+      @licenses = SoftwareLicense.where(:tags => [] )
+    else
+      @licenses = SoftwareLicense.any_of({ :tags.in => current_user.allowed_tags }, { :tags => [] })
+    end
   end
 
   def tagged

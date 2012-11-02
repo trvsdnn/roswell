@@ -1,0 +1,30 @@
+<div class="span6">
+<%= form_for @note do |f| %>
+
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+
+  <%= f.label :tag_list, 'Group(s)' %>
+  <%= f.text_field :tag_list %>
+
+  <%= f.label :body %>
+  <%= f.text_area :body, :class => "span6", :rows => 10 %> 
+
+  <hr><button type="submit" class="btn"><%= @note.new_record? ? 'Create' : 'Update' %> Note</button></hr>
+<% end %>
+</div>
+
+<% if Note.tags.empty? %>
+  <div class="span3 offset3">
+    <p class="muted">No groups yet..</p>
+  </div>
+<% else %>
+  <div class="span3 offset3">
+    <p class="muted">Groups:</p>
+    <ul class="unstyled">
+      <% Note.tags.each do |tag| %>
+        <li class="muted"><%= "#{tag}" %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

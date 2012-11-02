@@ -2,7 +2,11 @@ class NotesController < ApplicationController
   before_filter :authorize
 
   def index
-    @notes = Note.any_of({ :tags.in => current_user.allowed_tags }, { :tags => [] })
+    if current_user.allowed_tags.nil?
+      @notes = Note.where(:tags => [] )
+    else
+      @notes = Note.any_of({ :tags.in => current_user.allowed_tags }, { :tags => [] })
+    end
   end
 
   def tagged

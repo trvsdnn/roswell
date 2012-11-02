@@ -1,11 +1,11 @@
 <div class="page-header">
-  <h3><%= link_to_with_selected 'Add a new Software License', new_software_license_path %></h3>
+  <h3><%= (params[:tag]) %> Licenses</h3>
 </div>
 
 <div class="row">
   <div class="span2">
-    <ul class="nav nav-list">
-      <li class="nav-header">Tags</li>
+    <ul class="well nav nav-list">
+      <li class="nav-header">Groups</li>
       <% SoftwareLicense.tags.each do |tag| %>
         <li <%= active_class_if(tagged_software_licenses_path(:tag => tag)) %> ><%= link_to_with_selected "#{tag}", tagged_software_licenses_path(:tag => tag) %></li>
       <% end %>

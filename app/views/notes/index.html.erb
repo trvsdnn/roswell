@@ -1,10 +1,11 @@
 <div class="page-header">
-  <h3><%= link_to_with_selected 'Add a new Note', new_note_path  %></h3>
+  <h3><%= (params[:tag]) %> Notes</h3>
 </div>
 
 <div class="row">
   <div class="span2">
-    <ul class="nav nav-pills nav-stacked">
+    <ul class="well nav nav-list">
+      <li class="nav-header">Groups</li>
       <% Note.tags.each do |tag| %>
         <li <%= active_class_if(tagged_notes_path(:tag => tag)) %> ><%= link_to_with_selected "#{tag}", tagged_notes_path(:tag => tag) %></li>
       <% end %>

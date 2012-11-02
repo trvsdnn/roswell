@@ -11,7 +11,8 @@ class ApplicationController < ActionController::Base
   def authorize
     if current_user.nil?
       redirect_to login_url, :alert => 'Not authorized'
-    elsif params[:action] == 'tagged' && ( !current_user.admin? || !current_user.allowed_tags.include?(params[:tag]) )
+    elsif current_user.allowed_tags
+    elsif params[:action] == 'tagged' && ( !current_user.admin? )
       redirect_to login_url, :alert => 'Not authorized'
     end
   end
