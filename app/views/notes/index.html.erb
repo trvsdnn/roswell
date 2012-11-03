@@ -6,7 +6,7 @@
   <div class="span2">
     <ul class="well nav nav-list">
       <li class="nav-header">Groups</li>
-      <% Note.tags.each do |tag| %>
+      <% allowed_tags_for(:notes).each do |tag| %>
         <li <%= active_class_if(tagged_notes_path(:tag => tag)) %> ><%= link_to_with_selected "#{tag}", tagged_notes_path(:tag => tag) %></li>
       <% end %>
     </ul>
