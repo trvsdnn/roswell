@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def allowed_tags_for(model)
-    klass = model.to_s[0..-2].camelize.constantize
+    klass = model.to_s.classify.constantize
     tags = klass.tags
     if current_user.admin?
       tags

@@ -12,7 +12,8 @@ class SoftwareLicensesController < ApplicationController
   end
 
   def tagged
-    @licenses = SoftwareLicense.tagged_with(params[:tag])
+    @tag = params[:tag]
+    @licenses = SoftwareLicense.tagged_with(@tag)
     render :template => 'software_licenses/index'
   end
 

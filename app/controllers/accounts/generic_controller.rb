@@ -2,13 +2,19 @@ class Accounts::GenericController < ApplicationController
   before_filter :authorize
 
   def index
-    @accounts = GenericAccount.any_of({ :tags.in => current_user.allowed_tags }, { :tags => [] })
-    render :template => 'accounts/index'
+    if current_user.admin
+      @accounts = GenericAccount.all
+    elsif current_user.allowed_tags.nil?
+      @accounts = GenericAccount.where(:tags => [] )
+    else
+      @accounts = GenericAccount.any_of({ :tags.in => current_user.allowed_tags }, { :tags => [] })
+    end
   end
 
   def tagged
-    @accounts = GenericAccount.tagged_with(params[:tag])
-    render :template => 'accounts/index'
+    @tag = params[:tag]
+    @accounts = GenericAccount.tagged_with(@tag)
+    render :template => 'accounts/generic/index'
   end
 
   def new

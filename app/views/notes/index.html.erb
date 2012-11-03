@@ -1,5 +1,12 @@
 <div class="page-header">
-  <h3><%= (params[:tag]) %> Notes</h3>
+  <h3>
+    <% if @tag %>
+      Notes tagged with &ldquo;<%= @tag %>&rdquo;
+    <% else %>
+      Notes
+    <% end %>
+    <%= link_to 'New Note', new_note_path, :class => 'btn btn-small pull-right' %>
+  </h3>
 </div>
 
 <div class="row">

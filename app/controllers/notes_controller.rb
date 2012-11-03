@@ -12,7 +12,8 @@ class NotesController < ApplicationController
   end
 
   def tagged
-    @notes = Note.tagged_with(params[:tag])
+    @tag = params[:tag]
+    @notes = Note.tagged_with(@tag)
     render :template => 'notes/index'
   end
 
