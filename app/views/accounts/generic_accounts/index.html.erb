@@ -1,13 +1,9 @@
 <div class="page-header">
-  <ul class="nav nav-pills">
-    <li <%= active_class_if(accounts_generic_accounts_path) %> ><%= link_to 'Generic', accounts_generic_accounts_path %></li>
-    <li <%= active_class_if(accounts_web_accounts_path) %> ><%= link_to 'Web', accounts_web_accounts_path %></li>
-  </ul>
   <h3>
     <% if @tag %>
-      Accounts tagged with &ldquo;<%= @tag %>&rdquo;
+      Generic Accounts tagged with &ldquo;<%= @tag %>&rdquo;
     <% else %>
-      Accounts
+      Generic Accounts
     <% end %>
     <%= link_to 'New Account', new_accounts_generic_account_path, :class => 'btn btn-small pull-right' %>
   </h3>

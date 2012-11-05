@@ -3,7 +3,7 @@
 <head>
   <title>Roswell</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "application", "bootstrap.js" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -20,7 +20,18 @@
       <div class="navbar-inner">
         <a class="brand" href="#">Roswell</a>
         <ul class="nav">
-          <li <%= active_class_if(accounts_generic_accounts_path) %> ><%= link_to 'Passwords', accounts_generic_accounts_path %></li>
+          <li class="divider-vertical"></li>
+          <li class="dropdown<%= request.path =~ /\A\/accounts\// ? ' active' : '' %>">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              Accounts
+              <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to 'Generic', accounts_generic_accounts_path %></li>
+              <li><%= link_to 'Web', accounts_web_accounts_path %></li>
+            </ul>
+          </li>
+          <li class="divider-vertical"></li>
           <li <%= active_class_if(notes_path) %> ><%= link_to 'Notes', notes_path %></li>
           <li <%= active_class_if(software_licenses_path) %> ><%= link_to 'Licenses', software_licenses_path %></li>
         </ul>
