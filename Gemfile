@@ -15,6 +15,15 @@ group :development do
   gem 'faker', '~> 1.1.2'
 end
 
+group :development, :test do
+  gem 'minitest-rails', '~> 0.3'
+end
+
+group :test do
+  gem 'database_cleaner', '>= 0.7.2'
+  # gem 'mocha', '~> 0.12.1'
+end
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
