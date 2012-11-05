@@ -1,4 +1,4 @@
-class Accounts::GenericController < ApplicationController
+class Accounts::GenericAccountsController < ApplicationController
   before_filter :authorize
 
   def index
@@ -14,7 +14,7 @@ class Accounts::GenericController < ApplicationController
   def tagged
     @tag = params[:tag]
     @accounts = GenericAccount.tagged_with(@tag)
-    render :template => 'accounts/generic/index'
+    render :template => 'accounts/generic_accounts/index'
   end
 
   def new
@@ -25,7 +25,7 @@ class Accounts::GenericController < ApplicationController
     @account = GenericAccount.new(account_params)
 
     if @account.save
-      redirect_to @note, :notice => 'Account created'
+      redirect_to [ :accounts, @account ], :notice => 'Account created'
     else
       render :new
     end

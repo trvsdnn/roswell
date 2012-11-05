@@ -1,34 +1,37 @@
 <div class="page-header">
+  <ul class="nav nav-pills">
+    <li <%= active_class_if(accounts_generic_accounts_path) %> ><%= link_to 'Generic', accounts_generic_accounts_path %></li>
+    <li <%= active_class_if(accounts_web_accounts_path) %> ><%= link_to 'Web', accounts_web_accounts_path %></li>
+  </ul>
   <h3>
     <% if @tag %>
       Accounts tagged with &ldquo;<%= @tag %>&rdquo;
     <% else %>
       Accounts
     <% end %>
-    <%= link_to 'New Account', new_accounts_generic_path, :class => 'btn btn-small pull-right' %>
+    <%= link_to 'New Account', new_accounts_generic_account_path, :class => 'btn btn-small pull-right' %>
   </h3>
 </div>
 
 <div class="row">
   <div class="span2">
-    <ul class="nav nav-pills nav-stacked">
+    <ul class="well nav nav nav-list">
+      <li class="nav-header">Groups</li>
       <% allowed_tags_for(:generic_accounts).each do |tag| %>
         <li <%= active_class_if(accounts_tagged_generic_path(:tag => tag)) %> ><%= link_to "#{tag}", accounts_tagged_generic_path(:tag => tag) %></li>
       <% end %>
     </ul>
   </div>
-</div>
 
 <div class="span10">
-<div id='notes'>
+<div id='accounts'>
   <table class='table table-striped table-bordered table-condensed'>
     <thead>
       <tr>
         <th class='title'>Title</th>
-        <th class='actions'>Username</th>
-        <th class='created_at'>Created</th>
-        <th class='updated_at'>Updated</th>
-        <th></th>
+        <th class='username'>Username</th>
+        <th class='password'>Password</th>
+        <th class='actions'>Details</th>
       </tr>
     </thead>
     <tbody>
@@ -36,9 +39,8 @@
       <tr>
         <td><%= account.title %></td>
         <td><%= account.username %></td>
-        <td><%= fmt_datetime(account.created_at) %></td>
-        <td><%= fmt_datetime(account.updated_at) %></td>
-        <td><%= link_to 'View', accounts_generic_path(account) %></td>
+        <td><%= account.password %></td>
+        <td><%= link_to 'View', accounts_generic_account_path(account) %></td>
       </tr>
     <% end %>
     </tbody>

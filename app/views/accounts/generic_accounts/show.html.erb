@@ -1,0 +1,29 @@
+<div class='page-header'>
+<% if @account.tags.present? %>
+  <h2><%= @account.title %> <small><%= @account.tags.join(' ') %></small></h2>
+<% else %>
+  <h2><%= @account.title %></h2>
+<% end %>
+</div>
+
+<dl>
+  <dt>Title</dt>
+  <dd><%= @account.title %></dd>
+  <p></p>
+  <dt>Username</dt>
+  <dd><%= @account.username %></dd>
+  <p></p>
+  <dt>Password</dt>
+  <dd><%= @account.password %></dd>
+  <p></p>
+  <dt>Created</dt>
+  <dd><%= fmt_datetime(@account.created_at) %></dd>
+  <p></p>
+  <dt>Updated</dt>
+  <dd><%= fmt_datetime(@account.updated_at) %></dd>
+  <p></p>
+  <dt>Comments</dt>
+  <dd><%= @account.comments %></dd>
+</dl>
+
+<hr><%= link_to 'Edit', edit_accounts_generic_account_path, :class => 'btn' %></hr>

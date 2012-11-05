@@ -7,8 +7,10 @@ Roswell::Application.routes.draw do
   resources :users
 
   namespace :accounts do
-    resources :generic
-    get 'generic/tag/:tag', :to => 'generic#tagged', :as => 'tagged_generic'
+    resources :generic_accounts, :path => 'generic'
+    get 'generic/tag/:tag', :to => 'generic_accounts#tagged', :as => 'tagged_generic'
+    resources :web_accounts, :path => 'web'
+    get 'web/tag/:tag', :to => 'web_accounts#tagged', :as => 'tagged_web'
   end
 
   resources :software_licenses
