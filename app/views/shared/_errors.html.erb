@@ -1,0 +1,10 @@
+<% if target.errors.any? %>
+<div class="alert alert-block alert-error">
+  <h5>Uh oh, something needs work</h5>
+  <ul>
+  <% target.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+  </ul>
+</div>
+<% end %>

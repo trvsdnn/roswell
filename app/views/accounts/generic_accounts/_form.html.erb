@@ -1,3 +1,5 @@
+<%= render 'shared/errors', :target => @account %>
+
 <div class="span6">
   <%= form_for [ :accounts, @account ] do |f| %>
     <%= f.label :title %>
