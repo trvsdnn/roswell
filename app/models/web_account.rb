@@ -5,6 +5,7 @@ class WebAccount
   include Mongoid::Timestamps
 
   field :title, :type => String
+  field :url, :type => String
   field :username, :type => String
   field :comments, :type => String
   field :updated_by_ip, :type => String

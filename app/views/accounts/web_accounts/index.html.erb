@@ -25,6 +25,7 @@
     <thead>
       <tr>
         <th class='title'>Title</th>
+        <th class='url'>URL</th>
         <th class='username'>Username</th>
         <th class='password'>Password</th>
         <th class='actions'>Details</th>
@@ -34,6 +35,7 @@
     <% @accounts.each do |account| %>
       <tr>
         <td><%= account.title %></td>
+        <td><%= account.url %></td>
         <td><%= account.username %></td>
         <td><%= account.password %></td>
         <td><%= link_to 'View', accounts_web_account_path(account) %></td>

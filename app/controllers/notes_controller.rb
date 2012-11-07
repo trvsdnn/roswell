@@ -45,7 +45,7 @@ class NotesController < ApplicationController
     if @note.update_attributes(note_params)
       redirect_to @note, :notice => 'Note updated'
     else
-      render :new
+      render :edit
     end
   end
 

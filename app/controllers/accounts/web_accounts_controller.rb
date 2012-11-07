@@ -39,11 +39,22 @@ class Accounts::WebAccountsController < ApplicationController
     @account = WebAccount.find(params[:id])
   end
 
+  def update
+    @account = WebAccount.find(params[:id])
+
+    if @account.update_attributes(account_params)
+      redirect_to [ :accounts, @account ], :notice => 'Account updated'
+    else
+      render :edit
+    end
+  end
+
   private
 
   def account_params
     params.require(:web_account).permit(
       :title,
+      :url,
       :username,
       :password,
       :comments,

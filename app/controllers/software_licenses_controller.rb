@@ -40,6 +40,16 @@ class SoftwareLicensesController < ApplicationController
     @license = SoftwareLicense.find(params[:id])
   end
 
+  def update
+    @license = SoftwareLicense.find(params[:id])
+
+    if @license.update_attributes(software_license_params)
+      redirect_to @license, :notice => 'License updated'
+    else
+      render :edit
+    end
+  end
+
   private
 
   def software_license_params
