@@ -19,7 +19,7 @@ module Mongoid
 
           field "encrypted_#{field}".to_sym, :type => String
 
-          before_save "encrypt_#{field}".to_sym
+          before_validation "encrypt_#{field}".to_sym
 
           define_method("#{field}=".to_sym) do |value|
             instance_variable_set("@unencypted_#{field}".to_sym, value)
