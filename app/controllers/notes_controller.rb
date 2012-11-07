@@ -39,6 +39,16 @@ class NotesController < ApplicationController
     @note = Note.find(params[:id])
   end
 
+  def update
+    @note = Note.find(params[:id])
+
+    if @note.update_attributes(note_params)
+      redirect_to @note, :notice => 'Note updated'
+    else
+      render :new
+    end
+  end
+
   private
 
   def note_params
