@@ -40,6 +40,7 @@ GEM
       multi_json (~> 1.0)
     faker (1.1.2)
       i18n (~> 0.5)
+    gibberish (1.2.0)
     hike (1.2.1)
     i18n (0.6.1)
     journey (1.0.4)
@@ -121,6 +122,7 @@ DEPENDENCIES
   bson_ext (~> 1.7.0)
   database_cleaner (>= 0.7.2)
   faker (~> 1.1.2)
+  gibberish (~> 1.2.0)
   jquery-rails
   minitest-rails (~> 0.3)
   mongoid (~> 2.5.1)

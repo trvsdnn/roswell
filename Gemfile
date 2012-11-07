@@ -10,6 +10,7 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'jquery-rails'
 gem 'unicorn'
 
+gem 'gibberish', '~> 1.2.0'
 
 group :development do
   gem 'faker', '~> 1.1.2'
