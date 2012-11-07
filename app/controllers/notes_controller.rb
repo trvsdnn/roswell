@@ -42,6 +42,12 @@ class NotesController < ApplicationController
   private
 
   def note_params
-    params.require(:note).permit(:title, :body, :tag_list)
+    params.require(:note).permit(
+      :title,
+      :body,
+      :tag_list
+    ).merge(
+      :updated_by_ip => request.remote_ip,
+    )
   end
 end

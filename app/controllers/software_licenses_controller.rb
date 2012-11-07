@@ -22,6 +22,7 @@ class SoftwareLicensesController < ApplicationController
   end
 
   def create
+    puts software_license_params.inspect
     @license = SoftwareLicense.new(software_license_params)
 
     if @license.save
@@ -48,6 +49,8 @@ class SoftwareLicensesController < ApplicationController
       :licensed_to,
       :comments,
       :tag_list
+    ).merge(
+      :updated_by_ip => request.remote_ip,
     )
   end
 end

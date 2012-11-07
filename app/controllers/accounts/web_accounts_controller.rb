@@ -42,6 +42,14 @@ class Accounts::WebAccountsController < ApplicationController
   private
 
   def account_params
-    params.require(:web_account).permit(:title, :username, :password, :comments, :tag_list)
+    params.require(:web_account).permit(
+      :title,
+      :username,
+      :password,
+      :comments,
+      :tag_list
+    ).merge(
+      :updated_by_ip => request.remote_ip,
+    )
   end
 end
