@@ -18,16 +18,8 @@ class User
   validates_presence_of :username
   validates_uniqueness_of :username, :case_sensitive => false
 
-  before_save :set_allowed_tags
-
-  private
-
-  def set_allowed_tags
-    if allowed_tags_list
-      self.allowed_tags = allowed_tags_list.split(',').compact
-    else
-      self.allowed_tags = []
-    end
+  def allowed_tags_list=(tags_list)
+    self.allowed_tags = tags_list.split(',').compact
   end
 
 end
