@@ -1,13 +1,11 @@
 <div class='page-header'>
-<% if @note.tags.present? %>
-  <h2><%= @note.title %> <small><%= @note.tags.join(' ') %></small></h2>
-<% else %>
-  <h2><%= @note.title %></h2>
-<% end %>
+  <h2>
+    <%= @note.title %>
+    <% if @note.tags.present? %><small><%= @note.tags.join(' ') %></small><% end %>
+    <%= link_to 'Edit', edit_note_path, :class=> 'btn btn-small pull-right' %>
+  </h2>
 </div>
 
 <div class="well">
   <%= @note.body %>
 </div>
-
-<hr><%= link_to 'Edit', edit_note_path, :class=> 'btn' %></hr>

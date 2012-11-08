@@ -1,9 +1,9 @@
 <div class='page-header'>
-<% if @account.tags.present? %>
-  <h2><%= @account.title %> <small><%= @account.tags.join(' ') %></small></h2>
-<% else %>
-  <h2><%= @account.title %></h2>
-<% end %>
+  <h2>
+    <%= @account.title %>
+    <% if @account.tags.present? %><small><%= @account.tags.join(' ') %></small><% end %>
+    <%= link_to 'Edit', edit_accounts_web_account_path, :class=> 'btn btn-small pull-right' %>
+  </h2>
 </div>
 
 <dl>
@@ -28,5 +28,3 @@
   <dt>Comments</dt>
   <dd><%= @account.comments %></dd>
 </dl>
-
-<hr><%= link_to 'Edit', edit_accounts_web_account_path, :class => 'btn' %></hr>

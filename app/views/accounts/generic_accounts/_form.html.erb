@@ -1,35 +1,36 @@
 <%= render 'shared/errors', :target => @account %>
 
-<div class="span6">
+<div class="span8">
   <%= form_for [ :accounts, @account ] do |f| %>
     <%= f.label :title %>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, :class => 'span7' %>
 
-    <%= f.label :tag_list, 'Group(s)' %>
-    <%= f.text_field :tag_list %>
+    <%= f.label :tag_list, 'Tags' %>
+    <%= f.text_field :tag_list, :class => 'span7' %>
 
     <%= f.label :username %>
-    <%= f.text_field :username %>
+    <%= f.text_field :username, :class => 'span7' %>
 
     <%= f.label :password %>
-    <%= f.text_field :password %>
+    <%= f.text_field :password, :class => 'span7' %>
 
     <%= f.label :comments %>
-    <%= f.text_area :comments, :rows => 5 %>
+    <%= f.text_area :comments, :class => 'span8', :rows => 6 %>
 
-    <hr><button type="submit" class="btn"><%= @account.new_record? ? 'Create' : 'Update' %> Account</button></hr>
+    <hr />
+    <button type="submit" class="btn"><%= @account.new_record? ? 'Create' : 'Update' %> Account</button>
   <% end %>
 </div>
 
+<div class="span3 offset1">
 <% if GenericAccount.tags.empty? %>
-  <p class="muted">No groups yet..</p>
+  <p class="muted">No tags yet..</p>
 <% else %>
-  <div class="span3 offset3">
-    <p class="muted">Groups:</p>
-    <ul class="unstyled">
-      <% GenericAccount.tags.each do |tag| %>
-        <li class="muted"><%= "#{tag}" %></li>
-      <% end %>
-    </ul>
-  </div>
+  <p class="muted">Tags:</p>
+  <ul class="unstyled">
+    <% GenericAccount.tags.each do |tag| %>
+      <li class="muted"><%= "#{tag}" %></li>
+    <% end %>
+  </ul>
 <% end %>
+</div>

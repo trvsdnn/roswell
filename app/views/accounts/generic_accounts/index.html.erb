@@ -24,10 +24,11 @@
   <table class='table table-striped table-bordered table-condensed'>
     <thead>
       <tr>
-        <th class='title'>Title</th>
-        <th class='username'>Username</th>
-        <th class='password'>Password</th>
-        <th class='actions'>Details</th>
+        <th>Title</th>
+        <th>Username</th>
+        <th>Created</th>
+        <th>Updated</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -35,7 +36,8 @@
       <tr>
         <td><%= account.title %></td>
         <td><%= account.username %></td>
-        <td><%= account.password %></td>
+        <td><%= fmt_datetime(account.created_at) %></td>
+        <td><%= fmt_datetime(account.updated_at) %></td>
         <td><%= link_to 'View', accounts_generic_account_path(account) %></td>
       </tr>
     <% end %>
