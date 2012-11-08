@@ -7,6 +7,6 @@ class WebAccount < BaseDocument
 
   encrypted_field :password, :key => Roswell::Application.config.secret_token
 
-  validates_presence_of :title, :username, :encrypted_password
+  validates_presence_of :title, :username
 
 end

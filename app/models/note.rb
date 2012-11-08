@@ -5,6 +5,6 @@ class Note < BaseDocument
 
   encrypted_field :body, :key => Roswell::Application.config.secret_token
 
-  validates_presence_of :title, :encrypted_body
+  validates_presence_of :title
 
 end
