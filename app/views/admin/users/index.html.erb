@@ -16,7 +16,7 @@
     <tbody>
     <% @users.each do |user| %>
       <tr>
-        <td><%= user.email %></td>
+        <td><%= user.username %></td>
         <td><%= user.allowed_tags.join(', ') %></td>
         <td><%= fmt_datetime(user.created_at) %></td>
         <td><%= fmt_datetime(user.updated_at) %></td>
