@@ -57,7 +57,8 @@ class NotesController < ApplicationController
       :body,
       :tag_list
     ).merge(
-      :updated_by_ip => request.remote_ip,
+      :last_updated_by_ip => request.remote_ip,
+      :current_user => current_user
     )
   end
 end

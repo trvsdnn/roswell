@@ -7,16 +7,16 @@ class User
 
   attr_accessor :allowed_tags_list
 
-  field :email, :type => String
+  field :username, :type => String
   field :password_digest, :type => String
   field :last_login_at, :type => Time
   field :allowed_tags, :type => Array, :default => []
   field :admin, :type => Boolean, :default => false
 
-  index :email, :unique => true
+  index :username, :unique => true
 
-  validates_presence_of :email
-  validates_uniqueness_of :email, :case_sensitive => false
+  validates_presence_of :username
+  validates_uniqueness_of :username, :case_sensitive => false
 
   before_save :set_allowed_tags
 
@@ -26,7 +26,7 @@ class User
     if allowed_tags_list
       self.allowed_tags = allowed_tags_list.split(',').compact
     else
-      self.allowed_tags = nil
+      self.allowed_tags = []
     end
   end
 
