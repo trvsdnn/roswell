@@ -12,6 +12,8 @@
  *= require_tree .
  */
 
+ h2 .btn-danger { margin-left: 10px; }
+
  .user-session {
    color: #999;
    margin: 10px 0px;

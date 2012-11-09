@@ -53,6 +53,12 @@ class SoftwareLicensesController < ApplicationController
     end
   end
 
+  def destroy
+    @license = SoftwareLicense.find(params[:id])
+    @license.destroy
+    redirect_to software_licenses_path, :notice => "License `#{@license.title}' removed"
+  end
+
   private
 
   def set_groups

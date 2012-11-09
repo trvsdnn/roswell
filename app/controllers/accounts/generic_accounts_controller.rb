@@ -53,6 +53,12 @@ class Accounts::GenericAccountsController < ApplicationController
     end
   end
 
+  def destroy
+    @account = GenericAccount.find(params[:id])
+    @account.destroy
+    redirect_to accounts_generic_accounts_path, :notice => "Account `#{@account.title}' removed"
+  end
+
   private
 
   def set_groups

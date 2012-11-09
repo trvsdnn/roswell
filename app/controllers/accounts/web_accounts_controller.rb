@@ -53,6 +53,12 @@ class Accounts::WebAccountsController < ApplicationController
     end
   end
 
+  def destroy
+    @account = WebAccount.find(params[:id])
+    @account.destroy
+    redirect_to accounts_web_accounts_path, :notice => "Account `#{@account.title}' removed"
+  end
+
   private
 
   def set_groups
