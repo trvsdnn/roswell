@@ -1,7 +1,7 @@
 <div class="page-header">
   <h3>
     <% if @group %>
-      Web Accounts grouped with &ldquo;<%= @group %>&rdquo;
+      Web Accounts grouped with &ldquo;<%= @group.name %>&rdquo;
     <% else %>
       Web Accounts
     <% end %>
@@ -14,7 +14,7 @@
     <ul class="well nav nav nav-list">
       <li class="nav-header">Groups</li>
       <% @groups.each do |group| %>
-        <li <%= active_class_if(accounts_grouped_web_path(:group => group)) %> ><%= link_to "#{group}", accounts_grouped_web_path(:group => group) %></li>
+        <li <%= active_class_if(accounts_grouped_web_path(:group => group.name)) %> ><%= link_to "#{group.name}", accounts_grouped_web_path(:group => group.name) %></li>
       <% end %>
     </ul>
   </div>

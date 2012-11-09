@@ -13,7 +13,7 @@ class Accounts::WebAccountsController < ApplicationController
   def grouped
     @group = allowed_groups.where(:name => params[:group]).first
     not_found unless @group
-    @notes = WebAccount.where(:group_ids.in => [@group.id])
+    @accounts = WebAccount.where(:group_ids.in => [@group.id])
     render :template => 'accounts/web_accounts/index'
   end
 
@@ -63,17 +63,17 @@ class Accounts::WebAccountsController < ApplicationController
 
   def set_groups
     if current_user.admin?
-      @groups = Group.all.where(:id.in => WebAccount.group_ids)
+      @groups = Group.all.where(:_id.in => WebAccount.group_ids)
     else
-      @groups = current_user.groups.where(:id.in => WebAccount.group_ids)
+      @groups = current_user.groups.where(:_id.in => WebAccount.group_ids)
     end
   end
 
   def account_params
     params.require(:web_account).permit(
       :title,
-      :url,
       :username,
+      :url,
       :password,
       :comments,
       :group_ids

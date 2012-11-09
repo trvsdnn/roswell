@@ -13,7 +13,7 @@ class SoftwareLicensesController < ApplicationController
   def grouped
     @group = allowed_groups.where(:name => params[:group]).first
     not_found unless @group
-    @notes = SoftwareLicense.where(:group_ids.in => [@group.id])
+    @licenses = SoftwareLicense.where(:group_ids.in => [@group.id])
     render :template => 'software_licenses/index'
   end
 

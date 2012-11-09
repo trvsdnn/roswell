@@ -13,7 +13,7 @@ class Accounts::GenericAccountsController < ApplicationController
   def grouped
     @group = allowed_groups.where(:name => params[:group]).first
     not_found unless @group
-    @notes = GenericAccount.where(:group_ids.in => [@group.id])
+    @accounts = GenericAccount.where(:group_ids.in => [@group.id])
     render :template => 'accounts/generic_accounts/index'
   end
 
@@ -63,9 +63,9 @@ class Accounts::GenericAccountsController < ApplicationController
 
   def set_groups
     if current_user.admin?
-      @groups = Group.all.where(:_id.in => WebAccount.group_ids)
+      @groups = Group.all.where(:_id.in => GenericAccount.group_ids)
     else
-      @groups = current_user.groups.where(:_id.in => WebAccount.group_ids)
+      @groups = current_user.groups.where(:_id.in => GenericAccount.group_ids)
     end
   end
 
