@@ -9,7 +9,6 @@ require "sprockets/railtie"
 # require "rails/test_unit/railtie"
 
 require File.expand_path('../../lib/mongoid-encryptable', __FILE__)
-require File.expand_path('../../lib/mongoid-taggable', __FILE__)
 
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line

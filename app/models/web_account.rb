@@ -1,4 +1,4 @@
-class WebAccount < BaseDocument
+class WebAccount < BaseItem
 
   field :title, :type => String
   field :url, :type => String

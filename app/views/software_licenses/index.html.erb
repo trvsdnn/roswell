@@ -1,7 +1,7 @@
 <div class="page-header">
   <h3>
-    <% if @tag %>
-      Licenses tagged with &ldquo;<%= @tag %>&rdquo;
+    <% if @group %>
+      Licenses grouped with &ldquo;<%= @group %>&rdquo;
     <% else %>
       Licenses
     <% end %>
@@ -13,8 +13,8 @@
   <div class="span2">
     <ul class="well nav nav-list">
       <li class="nav-header">Groups</li>
-      <% allowed_tags_for(:software_licenses).each do |tag| %>
-        <li <%= active_class_if(tagged_software_licenses_path(:tag => tag)) %> ><%= link_to_with_selected "#{tag}", tagged_software_licenses_path(:tag => tag) %></li>
+      <% @groups.each do |group| %>
+        <li <%= active_class_if(grouped_software_licenses_path(:group => group.name)) %> ><%= link_to "#{group.name}", grouped_software_licenses_path(:group => group.name) %></li>
       <% end %>
     </ul>
   </div

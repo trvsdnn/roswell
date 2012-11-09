@@ -1,8 +1,8 @@
 require "minitest_helper"
 
-describe BaseDocument do
+describe BaseItem do
   before do
-    @base_document = BaseDocument.new
+    @base_document = BaseItem.new
   end
 
   it "must be valid" do

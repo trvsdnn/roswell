@@ -1,28 +1,28 @@
 class SoftwareLicensesController < ApplicationController
   before_filter :authorize
+  before_filter :set_groups, :except => [ :create, :update, :show ]
 
   def index
-    if current_user.admin
+    if current_user.admin?
       @licenses = SoftwareLicense.all
-    elsif current_user.allowed_tags.nil?
-      @licenses = SoftwareLicense.where(:tags => [] )
     else
-      @licenses = SoftwareLicense.any_of({ :tags.in => current_user.allowed_tags }, { :tags => [] })
+      @licenses = SoftwareLicense.any_of({ :group_ids.in => current_user.group_ids }, { :group_ids => [] })
     end
   end
 
-  def tagged
-    @tag = params[:tag]
-    @licenses = SoftwareLicense.tagged_with(@tag)
+  def grouped
+    @group = Group.where(:name => params[:group]).first
+    not_found unless @group
+    @notes = SoftwareLicense.where(:group_ids.in => [@group.id])
     render :template => 'software_licenses/index'
   end
 
   def new
     @license = SoftwareLicense.new
+    @allowed_groups = allowed_groups
   end
 
   def create
-    puts software_license_params.inspect
     @license = SoftwareLicense.new(software_license_params)
 
     if @license.save
@@ -38,6 +38,7 @@ class SoftwareLicensesController < ApplicationController
 
   def edit
     @license = SoftwareLicense.find(params[:id])
+    @allowed_groups = allowed_groups
   end
 
   def update
@@ -51,6 +52,14 @@ class SoftwareLicensesController < ApplicationController
   end
 
   private
+
+  def set_groups
+    if current_user.admin?
+      @groups = Group.all.where(:_id.in => SoftwareLicense.group_ids)
+    else
+      @groups = current_user.groups.where(:_id.in => SoftwareLicense.group_ids)
+    end
+  end
 
   def software_license_params
     params.require(:software_license).permit(

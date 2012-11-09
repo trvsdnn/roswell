@@ -4,11 +4,11 @@ require 'securerandom'
 
 Mongoid.master.collections.reject { |c| c.name =~ /^system/}.each(&:drop)
 
-notes_tags = %w[foo bar buck yee deer monk chuck wulf]
-license_tags = %w[oksm mko wmlk wokd omso okme xpol psdl]
+group_ids = %w[foo bar buck yee deer monk chuck wulf].map do |name|
+  Group.create!(:name => name).id
+end
 
-
-user = User.create!(:username => 'admin', :password => 'asdfasdf', :allowed_tags => [ notes_tags, license_tags ].flatten)
+user = User.create!(:username => 'admin', :password => 'asdfasdf')
 
 100.times do |i|
   GenericAccount.create!(
@@ -18,14 +18,14 @@ user = User.create!(:username => 'admin', :password => 'asdfasdf', :allowed_tags
     :comments => [ Faker::Lorem.sentences(3), '' ].sample,
     :last_updated_by_ip => Faker::Internet.ip_v4_address,
     :current_user => user,
-    :tags => (rand(5).zero? ? notes_tags.sample(rand(notes_tags.size)) : [])
+    :group_ids => (rand(5).zero? ? group_ids.sample(rand(group_ids.size)) : [])
   )
   Note.create!(
     :title => Faker::Lorem.words.join(' '),
     :body => Faker::Lorem.sentences(3).join(' '),
     :last_updated_by_ip => Faker::Internet.ip_v4_address,
     :current_user => user,
-    :tags => (rand(5).zero? ? notes_tags.sample(rand(notes_tags.size)) : [])
+    :group_ids => (rand(5).zero? ? group_ids.sample(rand(group_ids.size)) : [])
   )
   SoftwareLicense.create!(
     :title => Faker::Lorem.word,
@@ -34,6 +34,6 @@ user = User.create!(:username => 'admin', :password => 'asdfasdf', :allowed_tags
     :comments => [ Faker::Lorem.sentences(3), '' ].sample,
     :last_updated_by_ip => Faker::Internet.ip_v4_address,
     :current_user => user,
-    :tags => (rand(5).zero? ? notes_tags.sample(rand(notes_tags.size)) : [])
+    :group_ids => (rand(5).zero? ? group_ids.sample(rand(group_ids.size)) : [])
   )
 end

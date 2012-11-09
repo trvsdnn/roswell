@@ -1,7 +1,7 @@
 <div class='page-header'>
   <h2>
     <%= @license.title %>
-    <% if @license.tags.present? %><small><%= @license.tags.join(' ') %></small><% end %>
+    <% if @license.groups.present? %><small><%= @license.groups.map(&:name).join(', ') %></small><% end %>
     <%= link_to 'Edit', edit_software_license_path, :class=> 'btn btn-small pull-right' %>
   </h2>
 </div>

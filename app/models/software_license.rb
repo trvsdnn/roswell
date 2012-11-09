@@ -1,4 +1,4 @@
-class SoftwareLicense < BaseDocument
+class SoftwareLicense < BaseItem
 
   field :title, :type => String
   field :licensed_to, :type => String

@@ -1,4 +1,4 @@
-class GenericAccount < BaseDocument
+class GenericAccount < BaseItem
 
   field :title, :type => String
   field :username, :type => String

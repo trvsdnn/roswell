@@ -1,24 +1,25 @@
 class NotesController < ApplicationController
   before_filter :authorize
+  before_filter :set_groups, :except => [ :create, :update, :show ]
 
   def index
-    if current_user.admin
+    if current_user.admin?
       @notes = Note.all
-    elsif current_user.allowed_tags.nil?
-      @notes = Note.where(:tags => [] )
     else
-      @notes = Note.any_of({ :tags.in => current_user.allowed_tags }, { :tags => [] })
+      @notes = Note.any_of({ :group_ids.in => current_user.group_ids }, { :group_ids => [] })
     end
   end
 
-  def tagged
-    @tag = params[:tag]
-    @notes = Note.tagged_with(@tag)
+  def grouped
+    @group = Group.where(:name => params[:group]).first
+    not_found unless @group
+    @notes = Note.where(:group_ids.in => [@group.id])
     render :template => 'notes/index'
   end
 
   def new
     @note = Note.new
+    @allowed_groups = allowed_groups
   end
 
   def create
@@ -37,6 +38,7 @@ class NotesController < ApplicationController
 
   def edit
     @note = Note.find(params[:id])
+    @allowed_groups = allowed_groups
   end
 
   def update
@@ -50,6 +52,14 @@ class NotesController < ApplicationController
   end
 
   private
+
+  def set_groups
+    if current_user.admin?
+      @groups = Group.all.where(:_id.in => Note.group_ids)
+    else
+      @groups = current_user.groups.where(:_id.in => Note.group_ids)
+    end
+  end
 
   def note_params
     params.require(:note).permit(

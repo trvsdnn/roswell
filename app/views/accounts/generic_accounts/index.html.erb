@@ -1,7 +1,7 @@
 <div class="page-header">
   <h3>
-    <% if @tag %>
-      Generic Accounts tagged with &ldquo;<%= @tag %>&rdquo;
+    <% if @group %>
+      Generic Accounts grouped with &ldquo;<%= @group %>&rdquo;
     <% else %>
       Generic Accounts
     <% end %>
@@ -13,8 +13,8 @@
   <div class="span2">
     <ul class="well nav nav nav-list">
       <li class="nav-header">Groups</li>
-      <% allowed_tags_for(:generic_accounts).each do |tag| %>
-        <li <%= active_class_if(accounts_tagged_generic_path(:tag => tag)) %> ><%= link_to "#{tag}", accounts_tagged_generic_path(:tag => tag) %></li>
+      <% @groups.each do |group| %>
+        <li <%= active_class_if(accounts_grouped_generic_path(:group => group.name)) %> ><%= link_to "#{group.name}", accounts_grouped_generic_path(:group => group.name) %></li>
       <% end %>
     </ul>
   </div>

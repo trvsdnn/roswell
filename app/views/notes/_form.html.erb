@@ -6,26 +6,22 @@
   <%= f.label :title %>
   <%= f.text_field :title, :class => 'span7' %>
 
-  <%= f.label :tag_list, 'Tags' %>
-  <%= f.text_field :tag_list, :class => 'span7' %>
-
   <%= f.label :body %>
   <%= f.text_area :body, :class => 'span8', :rows => 10 %>
 
+  <fieldset>
+    <legend>Groups</legend>
+    <br />
+    <%= hidden_field_tag "note[group_ids][]", nil%>
+    <% @allowed_groups.each do |group| %>
+      <label class="checkbox inline">
+        <%= check_box_tag 'note[group_ids][]', group.id, @note.groups.include?(group) %>
+        <%= group.name %>
+      </label>
+    <% end %>
+  </fieldset>
+
   <hr />
   <button type="submit" class="btn"><%= @note.new_record? ? 'Create' : 'Update' %> Note</button>
-<% end %>
-</div>
-
-<div class="span3 offset1">
-<% if Note.tags.empty? %>
-  <p class="muted">No tags yet..</p>
-<% else %>
-  <p class="muted">Tags:</p>
-  <ul class="unstyled">
-    <% Note.tags.each do |tag| %>
-      <li class="muted"><%= "#{tag}" %></li>
-    <% end %>
-  </ul>
 <% end %>
 </div>

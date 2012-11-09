@@ -1,24 +1,26 @@
 class Accounts::WebAccountsController < ApplicationController
   before_filter :authorize
+  before_filter :set_groups, :except => [ :create, :update, :show ]
 
   def index
     if current_user.admin
       @accounts = WebAccount.all
-    elsif current_user.allowed_tags.nil?
-      @accounts = WebAccount.where(:tags => [] )
     else
-      @accounts = WebAccount.any_of({ :tags.in => current_user.allowed_tags }, { :tags => [] })
+      @accounts = WebAccount.any_of({ :group_ids.in => current_user.group_ids }, { :group_ids => [] })
     end
   end
 
-  def tagged
-    @tag = params[:tag]
-    @accounts = WebAccount.tagged_with(@tag)
+  def grouped
+    @group = Group.where(:name => params[:group]).first
+    not_found unless @group
+    @notes = WebAccount.where(:group_ids.in => [@group.id])
     render :template => 'accounts/web_accounts/index'
   end
 
+
   def new
     @account = WebAccount.new
+    @allowed_groups = allowed_groups
   end
 
   def create
@@ -37,6 +39,7 @@ class Accounts::WebAccountsController < ApplicationController
 
   def edit
     @account = WebAccount.find(params[:id])
+    @allowed_groups = allowed_groups
   end
 
   def update
@@ -50,6 +53,14 @@ class Accounts::WebAccountsController < ApplicationController
   end
 
   private
+
+  def set_groups
+    if current_user.admin?
+      @groups = Group.all.where(:id.in => WebAccount.group_ids)
+    else
+      @groups = current_user.groups.where(:id.in => WebAccount.group_ids)
+    end
+  end
 
   def account_params
     params.require(:web_account).permit(

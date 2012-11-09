@@ -1,7 +1,7 @@
 <div class='page-header'>
   <h2>
     <%= @account.title %>
-    <% if @account.tags.present? %><small><%= @account.tags.join(' ') %></small><% end %>
+    <% if @account.groups.present? %><small><%= @account.groups.map(&:name).join(', ') %></small><% end %>
     <%= link_to 'Edit', edit_accounts_generic_account_path, :class=> 'btn btn-small pull-right' %>
   </h2>
 </div>

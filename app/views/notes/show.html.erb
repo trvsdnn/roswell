@@ -1,7 +1,7 @@
 <div class='page-header'>
   <h2>
     <%= @note.title %>
-    <% if @note.tags.present? %><small><%= @note.tags.join(' ') %></small><% end %>
+    <% if @note.groups.present? %><small><%= @note.groups.map(&:name).join(', ') %></small><% end %>
     <%= link_to 'Edit', edit_note_path, :class=> 'btn btn-small pull-right' %>
   </h2>
 </div>

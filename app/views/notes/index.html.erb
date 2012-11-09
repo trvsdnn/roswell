@@ -1,7 +1,7 @@
 <div class="page-header">
   <h3>
-    <% if @tag %>
-      Notes tagged with &ldquo;<%= @tag %>&rdquo;
+    <% if @group %>
+      Notes tagged with &ldquo;<%= @group.name %>&rdquo;
     <% else %>
       Notes
     <% end %>
@@ -13,8 +13,8 @@
   <div class="span2">
     <ul class="well nav nav-list">
       <li class="nav-header">Groups</li>
-      <% allowed_tags_for(:notes).each do |tag| %>
-        <li <%= active_class_if(tagged_notes_path(:tag => tag)) %> ><%= link_to_with_selected "#{tag}", tagged_notes_path(:tag => tag) %></li>
+      <% @groups.each do |group| %>
+        <li <%= active_class_if(grouped_notes_path(:group => group.name)) %> ><%= link_to "#{group.name}", grouped_notes_path(:group => group.name) %></li>
       <% end %>
     </ul>
   </div
