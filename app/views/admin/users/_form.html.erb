@@ -12,7 +12,6 @@
 
   <fieldset>
     <legend>Groups <small>&mdash; <%= link_to 'new group', new_admin_group_path %></small></legend>
-    <br />
     <%= hidden_field_tag "user[group_ids][]", nil%>
     <% @groups.each do |group| %>
       <label class="checkbox inline">
