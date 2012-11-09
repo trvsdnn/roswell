@@ -45,7 +45,8 @@ class Admin::UsersController < AdminController
       :username,
       :password,
       :password_confirmation,
-      :group_ids)
+      :group_ids
+    )
   end
 
 end
