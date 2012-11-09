@@ -8,7 +8,7 @@ group_ids = %w[foo bar buck yee deer monk chuck wulf].map do |name|
   Group.create!(:name => name).id
 end
 
-user = User.create!(:username => 'admin', :password => 'asdfasdf')
+user = User.create!(:username => 'admin', :password => 'asdfasdf', :admin => true)
 
 100.times do |i|
   GenericAccount.create!(
@@ -18,14 +18,16 @@ user = User.create!(:username => 'admin', :password => 'asdfasdf')
     :comments => [ Faker::Lorem.sentences(3), '' ].sample,
     :last_updated_by_ip => Faker::Internet.ip_v4_address,
     :current_user => user,
-    :group_ids => (rand(5).zero? ? group_ids.sample(rand(group_ids.size)) : [])
+    :group_ids => (rand(5).zero? ? group_ids.sample(rand(group_ids.size)) : []),
+    :current_user => user
   )
   Note.create!(
     :title => Faker::Lorem.words.join(' '),
     :body => Faker::Lorem.sentences(3).join(' '),
     :last_updated_by_ip => Faker::Internet.ip_v4_address,
     :current_user => user,
-    :group_ids => (rand(5).zero? ? group_ids.sample(rand(group_ids.size)) : [])
+    :group_ids => (rand(5).zero? ? group_ids.sample(rand(group_ids.size)) : []),
+    :current_user => user
   )
   SoftwareLicense.create!(
     :title => Faker::Lorem.word,
@@ -34,6 +36,7 @@ user = User.create!(:username => 'admin', :password => 'asdfasdf')
     :comments => [ Faker::Lorem.sentences(3), '' ].sample,
     :last_updated_by_ip => Faker::Internet.ip_v4_address,
     :current_user => user,
-    :group_ids => (rand(5).zero? ? group_ids.sample(rand(group_ids.size)) : [])
+    :group_ids => (rand(5).zero? ? group_ids.sample(rand(group_ids.size)) : []),
+    :current_user => user
   )
 end
