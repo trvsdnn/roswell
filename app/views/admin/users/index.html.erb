@@ -10,6 +10,7 @@
     <thead>
       <tr>
         <th>Username</th>
+        <th>Admin</th>
         <th>Groups</th>
         <th>Modified</th>
         <th></th>
@@ -19,9 +20,13 @@
     <% @users.each do |user| %>
       <tr>
         <td><%= user.username %></td>
+        <td><%= user.admin? %></td>
         <td><%= user.groups.map(&:name).join(', ') %></td>
         <td><%= fmt_datetime(user.updated_at) %></td>
-        <td><%= link_to 'Edit', edit_admin_user_path(user) %></td>
+        <td>
+          <%= link_to 'Edit', edit_admin_user_path(user) %> |
+          <%= link_to 'Delete', admin_user_path(user), :confirm => "Are you sure you want to delete user `#{user.username}'", :method => :delete %>
+        </td>
       </tr>
     <% end %>
     </tbody>

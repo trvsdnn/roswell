@@ -1,7 +1,7 @@
 class Admin::UsersController < AdminController
 
   def index
-    @users = User.where(:admin => false).all
+    @users = User.where
   end
 
   def new
@@ -36,6 +36,12 @@ class Admin::UsersController < AdminController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    redirect_to admin_users_path, :notice => "User `#{@user.username}' removed"
   end
 
   private
