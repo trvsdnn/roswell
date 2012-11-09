@@ -9,6 +9,8 @@ class BaseDocument
   field :last_updated_by, :type => String
   field :last_updated_by_ip, :type => String
 
+  has_and_belongs_to_many :groups, :inverse_of => nil
+
   before_validation :set_updated_by
 
   validates_presence_of :last_updated_by, :last_updated_by_ip

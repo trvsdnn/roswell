@@ -1,0 +1,21 @@
+<%= form_for [ :admin, @group ] do |f| %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <fieldset>
+    <legend>Users <small>&mdash; <%= link_to 'new user', new_admin_user_path %></small></legend>
+    <br />
+    <%= hidden_field_tag "user[user_ids][]", nil%>
+    <% @users.each do |user| %>
+      <label class="checkbox inline">
+        <%= check_box_tag 'user[user_ids][]', user.id, @group.users.include?(user) %>
+        <%= user.username %>
+      </label>
+    <% end %>
+  </fieldset>
+
+  <hr />
+
+  <button type="submit" class="btn"><%= @group.new_record? ? 'Create' : 'Update' %> Group</button>
+<% end %>

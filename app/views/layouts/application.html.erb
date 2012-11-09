@@ -10,6 +10,12 @@
   <div class="container">
     <div class="user-session">
       <% if current_user %>
+        <% if current_user.admin? %>
+          <span class='admin'>
+            <%= link_to 'users', admin_users_path %> |
+            <%= link_to 'groups', admin_groups_path %>
+          </span>
+        <% end %>
         <%= current_user.username %> &mdash;
         <%= link_to 'Log Out', logout_path %>
       <% else %>
@@ -32,8 +38,8 @@
             </ul>
           </li>
           <li class="divider-vertical"></li>
-          <li <%= active_class_if(notes_path) %> ><%= link_to 'Notes', notes_path %></li>
           <li <%= active_class_if(software_licenses_path) %> ><%= link_to 'Licenses', software_licenses_path %></li>
+          <li <%= active_class_if(notes_path) %> ><%= link_to 'Notes', notes_path %></li>
         </ul>
       </div>
     </div>

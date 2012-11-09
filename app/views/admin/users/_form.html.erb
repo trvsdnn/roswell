@@ -3,14 +3,27 @@
   <%= f.label :username %>
   <%= f.text_field :username %>
 
-  <%= f.label :allowed_tags_list, 'Group(s)' %>
-  <%= f.text_field :allowed_tags_list %>
-
   <%= f.label :password %>
   <%= f.password_field :password %>
 
   <%= f.label :password_confirmation %>
   <%= f.password_field :password_confirmation %>
 
-  <hr><button type="submit" class="btn"><%= @user.new_record? ? 'Create' : 'Update' %> User</button></hr>
+
+
+  <fieldset>
+    <legend>Groups <small>&mdash; <%= link_to 'new group', new_admin_group_path %></small></legend>
+    <br />
+    <%= hidden_field_tag "user[group_ids][]", nil%>
+    <% @groups.each do |group| %>
+      <label class="checkbox">
+        <%= check_box_tag 'user[group_ids][]', group.id, @user.groups.include?(group) %>
+        <%= group.name %>
+      </label>
+    <% end %>
+  </fieldset>
+
+  <hr />
+
+  <button type="submit" class="btn"><%= @user.new_record? ? 'Create' : 'Update' %> User</button>
 <% end %>

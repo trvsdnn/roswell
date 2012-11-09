@@ -1,24 +1,25 @@
 <div class="page-header">
-  <h3><%= link_to 'Add a new User', new_admin_user_path  %></h3>
+  <h3>
+    Users
+    <%= link_to 'New User', new_admin_user_path, :class => 'btn btn-small pull-right'  %>
+  </h3>
 </div>
 
-<div id='notes'>
+<div class='users'>
   <table class='table table-striped table-bordered table-condensed'>
     <thead>
       <tr>
-        <th>Email</th>
-        <th>Allowed Tags</th>
-        <th>Created</th>
-        <th>Updated</th>
+        <th>Username</th>
+        <th>Groups</th>
+        <th>Modified</th>
         <th></th>
       </tr>
     </thead>
     <tbody>
     <% @users.each do |user| %>
       <tr>
-        <td><%= user.email %></td>
-        <td><%= user.allowed_tags.join(', ') %></td>
-        <td><%= fmt_datetime(user.created_at) %></td>
+        <td><%= user.username %></td>
+        <td><%= user.groups.map(&:name).join(', ') %></td>
         <td><%= fmt_datetime(user.updated_at) %></td>
         <td><%= link_to 'Edit', edit_admin_user_path(user) %></td>
       </tr>
