@@ -11,7 +11,7 @@ class SoftwareLicensesController < ApplicationController
   end
 
   def grouped
-    @group = Group.where(:name => params[:group]).first
+    @group = allowed_groups.where(:name => params[:group]).first
     not_found unless @group
     @notes = SoftwareLicense.where(:group_ids.in => [@group.id])
     render :template => 'software_licenses/index'
@@ -24,6 +24,7 @@ class SoftwareLicensesController < ApplicationController
 
   def create
     @license = SoftwareLicense.new(software_license_params)
+    @allowed_groups = allowed_groups
 
     if @license.save
       redirect_to @license, :notice => 'License added'
@@ -43,6 +44,7 @@ class SoftwareLicensesController < ApplicationController
 
   def update
     @license = SoftwareLicense.find(params[:id])
+    @allowed_groups = allowed_groups
 
     if @license.update_attributes(software_license_params)
       redirect_to @license, :notice => 'License updated'
@@ -67,7 +69,7 @@ class SoftwareLicensesController < ApplicationController
       :license_key,
       :licensed_to,
       :comments,
-      :tag_list
+      :group_ids
     ).merge(
       :last_updated_by_ip => request.remote_ip,
       :current_user => current_user

@@ -11,7 +11,7 @@ class Accounts::GenericAccountsController < ApplicationController
   end
 
   def grouped
-    @group = Group.where(:name => params[:group]).first
+    @group = allowed_groups.where(:name => params[:group]).first
     not_found unless @group
     @notes = GenericAccount.where(:group_ids.in => [@group.id])
     render :template => 'accounts/generic_accounts/index'
@@ -24,6 +24,7 @@ class Accounts::GenericAccountsController < ApplicationController
 
   def create
     @account = GenericAccount.new(account_params)
+    @allowed_groups = allowed_groups
 
     if @account.save
       redirect_to [ :accounts, @account ], :notice => 'Account created'
@@ -43,6 +44,7 @@ class Accounts::GenericAccountsController < ApplicationController
 
   def update
     @account = GenericAccount.find(params[:id])
+    @allowed_groups = allowed_groups
 
     if @account.update_attributes(account_params)
       redirect_to [ :accounts, @account ], :notice => 'Account updated'
@@ -67,7 +69,7 @@ class Accounts::GenericAccountsController < ApplicationController
       :username,
       :password,
       :comments,
-      :tag_list
+      :group_ids
     ).merge(
       :last_updated_by_ip => request.remote_ip,
       :current_user => current_user

@@ -11,7 +11,7 @@ class NotesController < ApplicationController
   end
 
   def grouped
-    @group = Group.where(:name => params[:group]).first
+    @group = allowed_groups.where(:name => params[:group]).first
     not_found unless @group
     @notes = Note.where(:group_ids.in => [@group.id])
     render :template => 'notes/index'
@@ -24,6 +24,7 @@ class NotesController < ApplicationController
 
   def create
     @note = Note.new(note_params)
+    @allowed_groups = allowed_groups
 
     if @note.save
       redirect_to @note, :notice => 'Note created'
@@ -43,6 +44,7 @@ class NotesController < ApplicationController
 
   def update
     @note = Note.find(params[:id])
+    @allowed_groups = allowed_groups
 
     if @note.update_attributes(note_params)
       redirect_to @note, :notice => 'Note updated'
@@ -65,7 +67,7 @@ class NotesController < ApplicationController
     params.require(:note).permit(
       :title,
       :body,
-      :tag_list
+      :group_ids
     ).merge(
       :last_updated_by_ip => request.remote_ip,
       :current_user => current_user
