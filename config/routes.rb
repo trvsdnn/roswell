@@ -3,6 +3,8 @@ Roswell::Application.routes.draw do
   get 'login', :to => 'sessions#new', :as => 'login'
   get 'logout', :to => 'sessions#destroy', :as => 'logout'
 
+  get 'search', :to => 'search#index'
+
   resources :sessions
   resources :users
 
@@ -23,5 +25,5 @@ Roswell::Application.routes.draw do
     resources :groups, :except => [ :show ]
   end
 
-  root :to => 'notes#index'
+  root :to => 'accounts/web_accounts#index'
 end
