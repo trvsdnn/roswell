@@ -22,6 +22,7 @@ end
 
 group :test do
   gem 'database_cleaner', '>= 0.7.2'
+  gem 'factory_girl_rails', '~> 4.1.0'
   # gem 'mocha', '~> 0.12.1'
 end
 

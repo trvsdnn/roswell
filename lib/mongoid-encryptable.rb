@@ -24,7 +24,7 @@ module Mongoid
 
           define_method(:field_has_data) do
             unencrypted = instance_variable_get("@unencypted_#{field}".to_sym)
-            errors.add(:base, "#{field.to_s.capitalize} must have data") if unencrypted.nil? || unencrypted.blank?
+            errors.add(field.to_sym, "#{field.to_s.capitalize} must have data") if unencrypted.nil? || unencrypted.blank?
           end
 
           define_method("#{field}=".to_sym) do |value|
