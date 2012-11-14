@@ -12,7 +12,11 @@ class FavoritesController < ApplicationController
     @item = get_item
 
     current_user.favorite!(@item)
-    redirect_to favorites_path, :notice => "#{@item.title} added to favorites"
+    if params[:item_type] =~ /Account\z/
+      redirect_to [ :accounts, @item ], :notice => "#{@item.title} added to favorites"
+    else
+      redirect_to @item, :notice => "#{@item.title} added to favorites"
+    end
   end
 
   def destroy

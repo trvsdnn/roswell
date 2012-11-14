@@ -18,10 +18,10 @@
 
  h2 .favorite {
    color: #FF50A1;
-   font-size: 24px;
+   font-size: 14px;
    position: absolute;
-   top: 7px;
-   left: -30px;
+   top: 3px;
+   left: -25px;
    text-decoration: none;
  }
 
