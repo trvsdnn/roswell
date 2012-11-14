@@ -26,15 +26,13 @@
       <tr>
         <th class='title'>Title</th>
         <th>Last Modified</th>
-        <th></th>
       </tr>
     </thead>
     <tbody>
     <% @notes.each do |note| %>
       <tr>
-        <td><%= note.title %></td>
+        <td><%= link_to note.title, note_path(note) %></td>
         <td><%= fmt_datetime(note.updated_at) %></td>
-        <td><%= link_to 'View', note_path(note) %></td>
       </tr>
     <% end %>
     </tbody>

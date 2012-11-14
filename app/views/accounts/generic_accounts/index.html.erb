@@ -26,16 +26,14 @@
         <th>Title</th>
         <th>Username</th>
         <th>Last Modified</th>
-        <th></th>
       </tr>
     </thead>
     <tbody>
     <% @accounts.each do |account| %>
       <tr>
-        <td><%= account.title %></td>
+        <td><%= link_to account.title, accounts_generic_account_path(account) %></td>
         <td><%= account.username %></td>
         <td><%= fmt_datetime(account.updated_at) %></td>
-        <td><%= link_to 'View', accounts_generic_account_path(account) %></td>
       </tr>
     <% end %>
     </tbody>

@@ -26,15 +26,13 @@
       <tr>
         <th class='title'>Title</th>
         <th>Last Modified</th>
-        <th></th>
       </tr>
     </thead>
     <tbody>
     <% @licenses.each do |license| %>
       <tr>
-        <td><%= license.title %></td>
+        <td><%= link_to license.title, software_license_path(license) %></td>
         <td><%= fmt_datetime(license.updated_at) %></td>
-        <td><%= link_to 'View', software_license_path(license) %></td>
       </tr>
     <% end %>
     </tbody>
