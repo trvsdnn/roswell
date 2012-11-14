@@ -1,87 +1,27 @@
 <% unless @web_accounts.empty? %>
 <h4>Web Accounts</h4>
-<div class="web-accounts">
-  <table class='table table-striped table-bordered table-condensed'>
-    <thead>
-      <tr>
-        <th class='title'>Title</th>
-        <th>Last Modified</th>
-      </tr>
-    </thead>
-    <tbody>
-    <% @web_accounts.each do |account| %>
-      <tr>
-        <td><%= link_to account.title, accounts_web_account_path(account) %></td>
-        <td><%= fmt_datetime(account.updated_at) %></td>
-      </tr>
-    <% end %>
-    </tbody>
-  </table>
+<div class="web-accounts results">
+  <%= render :partial => 'shared/table', :locals => { :items => @web_accounts } %>
 </div>
 <% end %>
 
 <% unless @generic_accounts.empty? %>
 <h4>Generic Accounts</h4>
-<div class="generic-accounts">
-  <table class='table table-striped table-bordered table-condensed'>
-    <thead>
-      <tr>
-        <th class='title'>Title</th>
-        <th>Last Modified</th>
-      </tr>
-    </thead>
-    <tbody>
-    <% @generic_accounts.each do |account| %>
-      <tr>
-        <td><%= link_to account.title, accounts_generic_account_path(account) %></td>
-        <td><%= fmt_datetime(account.updated_at) %></td>
-      </tr>
-    <% end %>
-    </tbody>
-  </table>
+<div class="generic-accounts results">
+  <%= render :partial => 'shared/table', :locals => { :items => @generic_accounts } %>
 </div>
 <% end %>
 
 <% unless @licenses.empty? %>
 <h4>Software Licenses</h4>
-<div class="licenses">
-  <table class='table table-striped table-bordered table-condensed'>
-    <thead>
-      <tr>
-        <th class='title'>Title</th>
-        <th>Last Modified</th>
-      </tr>
-    </thead>
-    <tbody>
-    <% @licenses.each do |license| %>
-      <tr>
-        <td><%= link_to license.title, software_license_path(license) %></td>
-        <td><%= fmt_datetime(license.updated_at) %></td>
-      </tr>
-    <% end %>
-    </tbody>
-  </table>
+<div class="licenses results">
+  <%= render :partial => 'shared/table', :locals => { :items => @licenses } %>
 </div>
 <% end %>
 
 <% unless @notes.empty? %>
 <h4>Notes</h4>
-<div class="notes">
-  <table class='table table-striped table-bordered table-condensed'>
-    <thead>
-      <tr>
-        <th class='title'>Title</th>
-        <th>Last Modified</th>
-      </tr>
-    </thead>
-    <tbody>
-    <% @notes.each do |note| %>
-      <tr>
-        <td><%= link_to note.title, note_path(note) %></td>
-        <td><%= fmt_datetime(note.updated_at) %></td>
-      </tr>
-    <% end %>
-    </tbody>
-  </table>
+<div class="notes results">
+  <%= render :partial => 'shared/table', :locals => { :items => @notes } %>
 </div>
 <% end %>

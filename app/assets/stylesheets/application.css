@@ -39,6 +39,10 @@
    color: #ccc;
  }
 
- .favorites th.title, .licenses th.title, .notes th.title {
+.licenses th.title, .notes th.title {
    width: 70%;
  }
+ 
+.results th.title {
+  width: 70% !important;
+}
