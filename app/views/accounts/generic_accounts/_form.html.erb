@@ -2,8 +2,10 @@
 
 <div class="span8">
   <%= form_for [ :accounts, @account ] do |f| %>
-    <%= f.label :title %>
-    <%= f.text_field :title, :class => 'span7' %>
+    <% if controller.action_name != 'show' %>
+      <%= f.label :title %>
+      <%= f.text_field :title, :class => 'span7' %>
+    <% end %>
 
     <%= f.label :username %>
     <%= f.text_field :username, :class => 'span7' %>
@@ -13,20 +15,24 @@
 
     <%= f.label :comments %>
     <%= f.text_area :comments, :class => 'span8', :rows => 6 %>
+    
+    <% if controller.action_name != 'show' %>
+      <fieldset>
+        <legend>Groups</legend>
+        <br />
+        <%= hidden_field_tag "generic_account[group_ids][]", nil%>
+        <% @allowed_groups.each do |group| %>
+          <label class="checkbox inline">
+            <%= check_box_tag 'generic_account[group_ids][]', group.id, @account.groups.include?(group) %>
+            <%= group.name %>
+          </label>
+        <% end %>
+      </fieldset>
+    
 
-    <fieldset>
-      <legend>Groups</legend>
-      <br />
-      <%= hidden_field_tag "generic_account[group_ids][]", nil%>
-      <% @allowed_groups.each do |group| %>
-        <label class="checkbox inline">
-          <%= check_box_tag 'generic_account[group_ids][]', group.id, @account.groups.include?(group) %>
-          <%= group.name %>
-        </label>
-      <% end %>
-    </fieldset>
-
-    <hr />
-    <button type="submit" class="btn"><%= @account.new_record? ? 'Create' : 'Update' %> Account</button>
+      <hr />
+      <button type="submit" class="btn"><%= @account.new_record? ? 'Create' : 'Update' %> Account</button>
+    <% end %>
+    
   <% end %>
 </div>

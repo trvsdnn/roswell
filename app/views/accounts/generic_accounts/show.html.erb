@@ -1,4 +1,4 @@
-<div class='page-header'>
+<div class="page-header">
   <h2>
     <%= render 'shared/favorite', :item => @account %>
     <%= @account.title %>
@@ -9,22 +9,4 @@
   </h2>
 </div>
 
-<dl>
-  <dt>Title</dt>
-  <dd><%= @account.title %></dd>
-  <p></p>
-  <dt>Username</dt>
-  <dd><%= @account.username %></dd>
-  <p></p>
-  <dt>Password</dt>
-  <dd><%= @account.password %></dd>
-  <p></p>
-  <dt>Created</dt>
-  <dd><%= fmt_datetime(@account.created_at) %></dd>
-  <p></p>
-  <dt>Updated</dt>
-  <dd><%= fmt_datetime(@account.updated_at) %></dd>
-  <p></p>
-  <dt>Comments</dt>
-  <dd><%= @account.comments %></dd>
-</dl>
+<%= render 'form' %>

@@ -21,9 +21,13 @@ class FavoritesController < ApplicationController
 
   def destroy
     @item = get_item
-
     current_user.defavorite!(@item)
-    redirect_to favorites_path, :notice => "#{@item.title} removed from favorites"
+
+    if params[:item_type] =~ /Account\z/
+      redirect_to [ :accounts, @item ], :notice => "#{@item.title} removed from favorites"
+    else
+      redirect_to @item, :notice => "#{@item.title} removed from favorites"
+    end
   end
 
   private

@@ -1,4 +1,4 @@
-<div class='page-header'>
+<div class="page-header">
   <h2>
     <%= render 'shared/favorite', :item => @license %>
     <%= @license.title %>
@@ -9,22 +9,4 @@
   </h2>
 </div>
 
-<dl>
-  <dt>Title</dt>
-  <dd><%= @license.title %></dd>
-  <p></p>
-  <dt>Key</dt>
-  <dd><%= @license.license_key %></dd>
-  <p></p>
-  <dt>Licensed to</dt>
-  <dd><%= @license.licensed_to %></dd>
-  <p></p>
-  <dt>Created</dt>
-  <dd><%= fmt_datetime(@license.created_at) %></dd>
-  <p></p>
-  <dt>Updated</dt>
-  <dd><%= fmt_datetime(@license.updated_at) %></dd>
-  <p></p>
-  <dt>Comments</dt>
-  <dd><%= @license.comments %></dd>
-</dl>
+<%= render 'form' %>
