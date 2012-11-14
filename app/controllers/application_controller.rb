@@ -15,6 +15,12 @@ class ApplicationController < ActionController::Base
       redirect_to login_url, :alert => 'Not authorized'
     end
   end
+  
+  def authorize_admin
+    if current_user.nil? || !current_user.admin?
+      redirect_to login_url, :alert => 'Not authorized'
+    end
+  end
 
   def allowed_groups
     if current_user.admin?

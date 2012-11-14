@@ -1,4 +1,5 @@
 class Admin::UsersController < AdminController
+  before_filter :authorize_admin
 
   def index
     @users = User.where
