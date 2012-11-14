@@ -12,7 +12,22 @@
  *= require_tree .
  */
 
+ h2 { position: relative; }
+
  h2 .btn-danger { margin-left: 10px; }
+
+ h2 .favorite {
+   color: #FF50A1;
+   font-size: 24px;
+   position: absolute;
+   top: 7px;
+   left: -30px;
+   text-decoration: none;
+ }
+
+ h2 .favorite:hover {
+   text-decoration: none;
+ }
 
  .user-session {
    color: #999;
@@ -24,6 +39,6 @@
    color: #ccc;
  }
 
- .licenses th.title, .notes th.title {
+ .favorites th.title, .licenses th.title, .notes th.title {
    width: 70%;
  }

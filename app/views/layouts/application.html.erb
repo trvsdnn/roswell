@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Roswell</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= stylesheet_link_tag    "application", "font-awesome", :media => "all" %>
   <%= javascript_include_tag "application", "bootstrap.js" %>
   <%= csrf_meta_tags %>
 </head>
@@ -22,9 +22,10 @@
     </div>
     <div class="navbar">
       <div class="navbar-inner">
-        <a class="brand" href="#">Roswell</a>
+        <span class="brand">Roswell</span>
         <ul class="nav">
           <li class="divider-vertical"></li>
+          <li <%= active_class_if(favorites_path) %> ><%= link_to 'Favorites', favorites_path %></li>
           <li class="dropdown<%= request.path =~ /\A\/accounts\// ? ' active' : '' %>">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               Accounts
@@ -35,7 +36,6 @@
               <li><%= link_to 'Web', accounts_web_accounts_path %></li>
             </ul>
           </li>
-          <li class="divider-vertical"></li>
           <li <%= active_class_if(software_licenses_path) %> ><%= link_to 'Licenses', software_licenses_path %></li>
           <li <%= active_class_if(notes_path) %> ><%= link_to 'Notes', notes_path %></li>
         </ul>

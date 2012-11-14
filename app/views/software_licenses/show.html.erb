@@ -1,5 +1,6 @@
 <div class='page-header'>
   <h2>
+    <%= render 'shared/favorite', :item => @license %>
     <%= @license.title %>
     <% if @license.groups.present? %><small><%= @license.groups.map(&:name).join(', ') %></small><% end %>
 

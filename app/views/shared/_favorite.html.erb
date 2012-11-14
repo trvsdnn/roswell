@@ -1,0 +1,9 @@
+<% if current_user.has_favorite?(item) %>
+  <%= link_to favorites_path(:item_id => item._id, :item_type => item.class.name), :method => :delete, :class => 'favorite' do %>
+    <i class='icon-heart'></i>
+  <% end %>
+<% else %>
+  <%= link_to favorites_path(:item_id => item._id, :item_type => item.class.name), :method => :post, :class => 'favorite' do %>
+    <i class='icon-heart-empty'></i>
+  <% end %>
+<% end %>
