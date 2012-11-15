@@ -9,4 +9,27 @@
   </h3>
 </div>
 
-<%= render 'form' %>
+<div class="span8">
+  <%= form_for [ :accounts, @account ] do |f| %>
+    <div class="input-append">
+      <%= f.label :url %>
+      <%= f.text_field :url, :class => 'span7' %>
+      <span class="add-on"><span class="clippy" data-text="<%= @account.url %>"></span></span>
+    </div>
+
+    <div class="input-append">
+      <%= f.label :username %>
+      <%= f.text_field :username, :class => 'span7' %>
+      <span class="add-on"><span class="clippy" data-text="<%= @account.username %>"></span></span>
+    </div>
+
+    <div class="input-append">
+      <%= f.label :password %>
+      <%= f.text_field :password, :class => 'span7' %>
+      <span class="add-on"><span class="clippy" data-text="<%= @account.password %>"></span></span>
+    </div>
+
+    <%= f.label :comments %>
+    <%= f.text_area :comments, :class => 'span8', :rows => 6 %>
+  <% end %>
+</div>

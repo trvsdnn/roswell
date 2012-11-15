@@ -16,4 +16,5 @@
 
 $(document).ready(function() {
   $('.dropdown-toggle').dropdown();
+  $('.clippy').clippy();
 });

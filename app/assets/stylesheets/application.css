@@ -29,6 +29,12 @@
    text-decoration: none;
  }
 
+ .input-append textarea {
+   -webkit-border-top-right-radius: 0;
+   -moz-border-radius-topright: 0;
+   border-top-right-radius: 0;
+ }
+
  .user-session {
    color: #999;
    margin: 10px 0px 30px 0px;

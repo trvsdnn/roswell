@@ -2,29 +2,25 @@
 
 <div class="span8">
 <%= form_for @note do |f| %>
-  <% if controller.action_name != 'show' %>
     <%= f.label :title %>
     <%= f.text_field :title, :class => 'span7' %>
-  <% end %>
 
   <%= f.label :body %>
   <%= f.text_area :body, :class => 'span8', :rows => 10 %>
-  
-  <% if controller.action_name != 'show' %>
-    <fieldset>
-      <legend>Groups</legend>
-      <br />
-      <%= hidden_field_tag "note[group_ids][]", nil%>
-      <% @allowed_groups.each do |group| %>
-        <label class="checkbox inline">
-          <%= check_box_tag 'note[group_ids][]', group.id, @note.groups.include?(group) %>
-          <%= group.name %>
-        </label>
-      <% end %>
-    </fieldset>
 
-    <hr />
-    <button type="submit" class="btn"><%= @note.new_record? ? 'Create' : 'Update' %> Note</button>
-  <% end %>
+  <fieldset>
+    <legend>Groups</legend>
+    <br />
+    <%= hidden_field_tag "note[group_ids][]", nil%>
+    <% @allowed_groups.each do |group| %>
+      <label class="checkbox inline">
+        <%= check_box_tag 'note[group_ids][]', group.id, @note.groups.include?(group) %>
+        <%= group.name %>
+      </label>
+    <% end %>
+  </fieldset>
+
+  <hr />
+  <button type="submit" class="btn"><%= @note.new_record? ? 'Create' : 'Update' %> Note</button>
 <% end %>
 </div>

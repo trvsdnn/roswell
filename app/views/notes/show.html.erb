@@ -9,4 +9,14 @@
   </h3>
 </div>
 
-<%= render 'form' %>
+<div class="span8">
+<%= form_for @note do |f| %>
+
+  <div class="input-append">
+    <%= f.label :body %>
+    <%= f.text_area :body, :class => 'span8', :rows => 10 %>
+    <span class="add-on"><span class="clippy" data-text="<%= @note.body %>"></span></span>
+  </div>
+
+<% end %>
+</div>
