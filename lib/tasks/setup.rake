@@ -33,9 +33,9 @@ def create_roswell_key
   key_path = File.join(Rails.root, 'config/initializers/roswell_key.rb')
 
   if File.exist? key_path
-    puts "config/roswell_key.rb already exists"
+    puts "config/initializers/roswell_key.rb already exists"
   else
-    puts "Creating config/roswell_key.rb"
+    puts "Creating config/initializers/roswell_key.rb"
     File.open(key_path, 'w') { |file| file.write("Roswell::Application.config.roswell_key = '#{SecureRandom.hex(64)}'") }
   end
 end
