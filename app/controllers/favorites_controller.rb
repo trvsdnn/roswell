@@ -4,7 +4,7 @@ class FavoritesController < ApplicationController
   def index
     @web_accounts = current_user.favorites.where(:item_type => 'WebAccount').map(&:item)
     @generic_accounts = current_user.favorites.where(:item_type => 'GenericAccount').map(&:item)
-    @licenses = current_user.favorites.where(:item_type => 'SoftwareLicense').map(&:item)
+    @licenses = current_user.favorites.where(:item_type => 'License').map(&:item)
     @notes = current_user.favorites.where(:item_type => 'Note').map(&:item)
   end
 

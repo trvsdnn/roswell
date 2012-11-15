@@ -29,7 +29,7 @@ user = User.create!(:username => 'admin', :password => 'asdfasdf', :admin => tru
     :group_ids => (rand(5).zero? ? group_ids.sample(rand(group_ids.size)) : []),
     :current_user => user
   )
-  SoftwareLicense.create!(
+  License.create!(
     :title => Faker::Lorem.word,
     :license_key => SecureRandom.hex,
     :licensed_to => [ Faker::Name.name, Faker::Internet.email ].sample,

@@ -5,7 +5,7 @@
     <% else %>
       Licenses
     <% end %>
-    <%= link_to 'New License', new_software_license_path, :class => 'btn btn-small pull-right' %>
+    <%= link_to 'New License', new_license_path, :class => 'btn btn-small pull-right' %>
   </h3>
 </div>
 
@@ -14,7 +14,7 @@
     <ul class="well nav nav-list">
       <li class="nav-header">Groups</li>
       <% @groups.each do |group| %>
-        <li <%= active_class_if(grouped_software_licenses_path(:group => group.name)) %> ><%= link_to "#{group.name}", grouped_software_licenses_path(:group => group.name) %></li>
+        <li <%= active_class_if(grouped_licenses_path(:group => group.name)) %> ><%= link_to "#{group.name}", grouped_licenses_path(:group => group.name) %></li>
       <% end %>
     </ul>
   </div
@@ -31,7 +31,7 @@
     <tbody>
     <% @licenses.each do |license| %>
       <tr>
-        <td><%= link_to license.title, software_license_path(license) %></td>
+        <td><%= link_to license.title, license_path(license) %></td>
         <td><%= fmt_datetime(license.updated_at) %></td>
       </tr>
     <% end %>

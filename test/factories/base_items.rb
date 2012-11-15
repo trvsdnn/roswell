@@ -28,7 +28,7 @@ FactoryGirl.define do
     current_user { create(:user) }
   end
 
-  factory :software_license do
+  factory :license do
     title
     license_key 'foo'
     current_user { create(:user) }

@@ -1,4 +1,4 @@
-class SoftwareLicense < BaseItem
+class License < BaseItem
 
   field :licensed_to, :type => String
   field :comments, :type => String

@@ -18,10 +18,10 @@
     <fieldset>
       <legend>Groups</legend>
       <br />
-      <%= hidden_field_tag "software_license[group_ids][]", nil%>
+      <%= hidden_field_tag "license[group_ids][]", nil%>
       <% @allowed_groups.each do |group| %>
         <label class="checkbox inline">
-          <%= check_box_tag 'software_license[group_ids][]', group.id, @license.groups.include?(group) %>
+          <%= check_box_tag 'license[group_ids][]', group.id, @license.groups.include?(group) %>
           <%= group.name %>
         </label>
       <% end %>

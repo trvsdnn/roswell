@@ -18,8 +18,8 @@ Roswell::Application.routes.draw do
     get 'web/group/:group', :to => 'web_accounts#grouped', :as => 'grouped_web'
   end
 
-  resources :software_licenses
-  get 'software_licenses/group/:group', :to => 'software_licenses#grouped', :as => 'grouped_software_licenses'
+  resources :licenses
+  get 'licenses/group/:group', :to => 'licenses#grouped', :as => 'grouped_licenses'
   resources :notes
   get 'notes/group/:group', :to => 'notes#grouped', :as => 'grouped_notes'
 
