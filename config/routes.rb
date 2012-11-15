@@ -28,5 +28,5 @@ Roswell::Application.routes.draw do
     resources :groups, :except => [ :show ]
   end
 
-  root :to => 'accounts/web_accounts#index'
+  root :to => 'sessions#new'
 end

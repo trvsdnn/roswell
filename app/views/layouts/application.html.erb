@@ -8,8 +8,8 @@
 </head>
 <body>
   <div class="container">
-    <div class="user-session">
-      <% if current_user %>
+    <% if current_user %>
+      <div class="user-session">
         logged in as <%= current_user.username %> &mdash;
         <% if current_user.admin? %>
           <span class='admin'>
@@ -18,31 +18,31 @@
           </span>
         <% end %>
         <%= link_to 'logout', logout_path %>
-      <% end %>
-    </div>
-    <div class="navbar">
-      <div class="navbar-inner">
-        <span class="brand">ROSWELL</span>
-        <ul class="nav">
-          <li <%= active_class_if(favorites_path) %> ><%= link_to 'Favorites', favorites_path %></li>
-          <li class="dropdown<%= request.path =~ /\A\/accounts\// ? ' active' : '' %>">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              Accounts
-              <b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu">
-              <li><%= link_to 'Generic', accounts_generic_accounts_path %></li>
-              <li><%= link_to 'Web', accounts_web_accounts_path %></li>
-            </ul>
-          </li>
-          <li <%= active_class_if(software_licenses_path) %> ><%= link_to 'Licenses', software_licenses_path %></li>
-          <li <%= active_class_if(notes_path) %> ><%= link_to 'Notes', notes_path %></li>
-        </ul>
-        <form class="navbar-search pull-right" action="<%= search_path %>">
-          <input type="text" name="query" class="search-query" placeholder="Search">
-        </form>
       </div>
-    </div>
+      <div class="navbar">
+        <div class="navbar-inner">
+          <span class="brand">ROSWELL</span>
+          <ul class="nav">
+            <li <%= active_class_if(favorites_path) %> ><%= link_to 'Favorites', favorites_path %></li>
+            <li class="dropdown<%= request.path =~ /\A\/accounts\// ? ' active' : '' %>">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                Accounts
+                <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><%= link_to 'Generic', accounts_generic_accounts_path %></li>
+                <li><%= link_to 'Web', accounts_web_accounts_path %></li>
+              </ul>
+            </li>
+            <li <%= active_class_if(software_licenses_path) %> ><%= link_to 'Licenses', software_licenses_path %></li>
+            <li <%= active_class_if(notes_path) %> ><%= link_to 'Notes', notes_path %></li>
+          </ul>
+          <form class="navbar-search pull-right" action="<%= search_path %>">
+            <input type="text" name="query" class="search-query" placeholder="Search">
+          </form>
+        </div>
+      </div>
+    <% end %>
 
     <% flash.each do |name, msg| %>
       <% if msg.is_a?(String) %>
