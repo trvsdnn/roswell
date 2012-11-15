@@ -2,6 +2,8 @@
 
 Roswell is a simple rails app that allows you to share passwords, notes, and software licenses with select groups of people.
 
+
+
 ![Account Screenshot](https://github.com/downloads/blahed/roswell/screenshot.png)
 
 ### Features
@@ -16,11 +18,11 @@ Roswell is a simple rails app that allows you to share passwords, notes, and sof
 
 ### How secure is Roswell it?
 
-Not extremely secure, but more secure than a shared google spreadsheet. Passwords are encrypted serverside before they are stored in mongo. The key to decrypt is stored on the server, so if your server is compromised, the passwords could be compromised. The `production` environment requires SSL, this is to ensure that cleartext passwords aren't sent/received over the wire.
+Not extremely secure, but more secure than a shared google spreadsheet. Passwords are encrypted server-side before they are stored in mongo. The key to decrypt is stored on the server, so if your server is compromised, the passwords could be compromised. The `production` environment requires SSL, this is to ensure that cleartext passwords aren't sent/received over the wire.
 
 ### How can it be more secure?
 
-Client-side encryption seems to be a popular solution, but also can be complex to implement and a little cumbersome to use. The hope was to figure out the UI and the workflow for creating/sharing/grouping/retrieving passwords, and then figure out how to make it more secure. Really, we just needed something better than a spreadsheet.
+Client-side encryption seems to be a popular solution, but can be complex to implement and a little cumbersome to use. The hope was to figure out the UI and the workflow for creating/sharing/grouping/retrieving passwords, and then figure out how to make it more secure. Really, we just needed something better than a spreadsheet.
 
 ### Installing Roswell
 
@@ -35,3 +37,11 @@ Then just start your choice of server (you'll wanna put it behind SSL).
 
 * Ruby 1.9
 * MongoDB
+
+## Contributing
+
+1. Fork it
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Added some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create new Pull Request
