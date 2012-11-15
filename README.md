@@ -2,6 +2,10 @@
 
 Roswell is a simple rails app that allows you to share passwords, notes, and software licenses with select groups of people.
 
+![Account Screenshot](https://github.com/downloads/blahed/roswell/account-screenshot.png)
+
+![Account Screenshot](https://github.com/downloads/blahed/roswell/favorites-screenshot.png)
+
 ### Features
 
 * Four types of: generic accounts, web accounts, licenses, and notes
