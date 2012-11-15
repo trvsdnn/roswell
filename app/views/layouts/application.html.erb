@@ -17,14 +17,13 @@
             <%= link_to 'groups', admin_groups_path %> |
           </span>
         <% end %>
-        <%= link_to 'log out', logout_path %>
+        <%= link_to 'logout', logout_path %>
       <% end %>
     </div>
     <div class="navbar">
       <div class="navbar-inner">
-        <span class="brand">Roswell</span>
+        <span class="brand">ROSWELL</span>
         <ul class="nav">
-          <li class="divider-vertical"></li>
           <li <%= active_class_if(favorites_path) %> ><%= link_to 'Favorites', favorites_path %></li>
           <li class="dropdown<%= request.path =~ /\A\/accounts\// ? ' active' : '' %>">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
