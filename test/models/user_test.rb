@@ -37,4 +37,16 @@ describe User do
     @user.favorites.size.must_equal 1
   end
 
+  it "removes items from a users favorites after item deletion" do
+    note = FactoryGirl.create(:note)
+
+    @user.favorite!(note)
+    @user.reload
+    @user.favorites.size.must_equal 1
+
+    note.destroy
+    @user.reload
+    @user.favorites.must_be :empty?
+  end
+
 end
