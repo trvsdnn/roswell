@@ -11,10 +11,12 @@ describe User do
 
     @user.favorites.must_be :empty?
 
-    @user.favorite(web_account)
-    @user.favorite(note)
+    @user.favorite!(web_account)
+    @user.favorite!(note)
     @user.reload
 
+    @user.has_favorite?(web_account).wont_be_nil
+    @user.has_favorite?(note).wont_be_nil
     @user.favorites.size.must_equal 2
   end
 
@@ -24,14 +26,14 @@ describe User do
 
     @user.favorites.must_be :empty?
 
-    @user.favorite(web_account)
-    @user.favorite(note)
+    @user.favorite!(web_account)
+    @user.favorite!(note)
     @user.reload
-    @user.defavorite(note)
+    @user.defavorite!(note)
     @user.reload
 
-    @user.favorites.has_key?(web_account._id.to_s).must_equal true
-    @user.favorites.has_key?(note._id.to_s).must_equal false
+    @user.has_favorite?(web_account).wont_be_nil
+    @user.has_favorite?(note).must_be_nil
     @user.favorites.size.must_equal 1
   end
 
