@@ -31,7 +31,7 @@
 
  .user-session {
    color: #999;
-   margin: 10px 0px;
+   margin: 10px 0px 30px 0px;
    text-align: right;
  }
 
@@ -42,7 +42,7 @@
 .licenses th.title, .notes th.title, .groups th.name {
    width: 70%;
  }
- 
+
 .results th.title {
   width: 70% !important;
 }
