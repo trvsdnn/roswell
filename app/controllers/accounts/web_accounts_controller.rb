@@ -78,7 +78,6 @@ class Accounts::WebAccountsController < ApplicationController
       :comments,
       :group_ids
     ).merge(
-      :last_updated_by_ip => request.remote_ip,
       :current_user => current_user
     )
   end
