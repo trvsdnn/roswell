@@ -24,7 +24,7 @@ Not extremely secure, but more secure than a shared google spreadsheet. Password
 
 Client-side encryption seems to be a popular solution, but can be complex to implement and a little cumbersome to use. The hope was to figure out the UI and the workflow for creating/sharing/grouping/retrieving passwords, and then figure out how to make it more secure. Really, we just needed something better than a spreadsheet.
 
-### Installing Roswell
+## Installing Roswell
 
 Roswell is just a rails app so clone it down somewhere and:
 
