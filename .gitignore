@@ -8,6 +8,7 @@
 /.bundle
 
 /config/mongoid.yml
+/config/initializers/roswell_key.rb
 
 # Ignore all logfiles and tempfiles.
 /log/*.log
