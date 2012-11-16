@@ -1,6 +1,6 @@
 class Admin::GroupsController < ApplicationController
   before_filter :authorize_admin
-    
+
   def index
     @groups = Group.all
   end
@@ -16,6 +16,7 @@ class Admin::GroupsController < ApplicationController
     if @group.save
       redirect_to admin_groups_path, :notice => 'Group created'
     else
+      @users = User.all
       render :new
     end
   end
@@ -35,6 +36,7 @@ class Admin::GroupsController < ApplicationController
     if @group.update_attributes(group_params)
       redirect_to admin_groups_path, :notice => 'Group updated'
     else
+      @users = User.all
       render :edit
     end
   end

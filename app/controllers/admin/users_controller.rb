@@ -16,6 +16,7 @@ class Admin::UsersController < AdminController
     if @user.save
       redirect_to admin_users_path, :notice => 'User created'
     else
+      @groups = Group.all
       render :new
     end
   end
@@ -35,6 +36,7 @@ class Admin::UsersController < AdminController
     if @user.update_attributes(user_params)
       redirect_to admin_users_path, :notice => 'User updated'
     else
+      @groups = Group.all
       render :edit
     end
   end
