@@ -2,7 +2,7 @@ CarrierWave.configure do |config|
 
   config.storage              = :grid_fs
   config.grid_fs_access_url   = "/files"
-  config.grid_fs_database     = Mongoid.database.name
+  config.grid_fs_database     = Mongoid.database.name if Rails.env.development?
 
   if Rails.env.production? and ENV['HEROKU'] and (mongo = ENV['MONGOLAB_URI'] || ENV['MONGOHQ_URL'])
     settings = URI.parse(mongo)
