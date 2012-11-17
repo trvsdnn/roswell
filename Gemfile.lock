@@ -34,6 +34,12 @@ GEM
     bson_ext (1.7.0)
       bson (~> 1.7.0)
     builder (3.0.4)
+    carrierwave (0.6.2)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+    carrierwave-mongoid (0.2.1)
+      carrierwave (~> 0.6.1)
+      mongoid (~> 2.1)
     database_cleaner (0.9.1)
     erubis (2.7.0)
     execjs (1.4.0)
@@ -125,6 +131,8 @@ PLATFORMS
 DEPENDENCIES
   bcrypt-ruby (~> 3.0.0)
   bson_ext (~> 1.7.0)
+  carrierwave
+  carrierwave-mongoid
   database_cleaner (>= 0.7.2)
   factory_girl_rails (~> 4.1.0)
   faker (~> 1.1.2)

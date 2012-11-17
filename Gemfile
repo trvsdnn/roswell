@@ -12,6 +12,9 @@ gem 'unicorn'
 
 gem 'gibberish', '~> 1.2.0'
 
+gem 'carrierwave'
+gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
+
 group :development do
   gem 'faker', '~> 1.1.2'
 end
