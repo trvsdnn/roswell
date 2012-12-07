@@ -6,6 +6,8 @@ require 'minitest/pride'
 require 'database_cleaner'
 # require 'mocha'
 
+Dir[Rails.root.join("test/support/**/*.rb")].each { |f| require f }
+
 DatabaseCleaner.strategy = :truncation
 
 class MiniTest::Spec
@@ -27,7 +29,12 @@ end
 class ControllerSpec < MiniTest::Spec
   include Rails.application.routes.url_helpers
   include ActionController::TestCase::Behavior
+  include ActiveSupport::Testing::Assertions
+  include ControllerMacros
 
+  def build_message(*args)
+    args[1].gsub(/\?/, '%s') % args[2..-1]
+  end
   class << self
     alias :context :describe
   end
