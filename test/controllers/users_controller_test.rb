@@ -23,7 +23,7 @@ describe UsersController do
     post :update, id: user, user: valid_attributes
     user.reload
     assert_equal 'this_is_me', user.username
-    assert_redirected_to user
+    assert_redirected_to edit_user_path(user)
   end
 
   it "re-renders the form if attributes are not valid" do
