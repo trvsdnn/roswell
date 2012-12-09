@@ -16,6 +16,9 @@
             <%= link_to 'users', admin_users_path %> |
             <%= link_to 'groups', admin_groups_path %> |
           </span>
+        <% else %>
+          <%= link_to 'My account', edit_user_path(current_user) %> |
+
         <% end %>
         <%= link_to 'logout', logout_path %>
       </div>

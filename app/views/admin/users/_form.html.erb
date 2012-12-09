@@ -1,15 +1,5 @@
 <%= form_for [ :admin, @user ] do |f| %>
-
-  <%= f.label :username %>
-  <%= f.text_field :username %>
-
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
-
-
+  <%= render 'form_fields', f: f%>
   <fieldset>
     <legend>Groups <small>&mdash; <%= link_to 'new group', new_admin_group_path %></small></legend>
     <%= hidden_field_tag "user[group_ids][]", nil%>
