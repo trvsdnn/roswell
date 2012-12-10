@@ -1,0 +1,11 @@
+<div class="page-header">
+  <h3>My account</h3>
+</div>
+
+<div class="span6">
+  <%= form_for @user do |f| %>
+    <%= render 'admin/users/form_fields', f: f %>
+    <br />
+    <button type="submit" class="btn">Update</button>
+  <% end %>
+</div>
