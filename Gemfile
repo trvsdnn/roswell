@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.8'
+gem 'rails', '3.2.11'
 gem 'strong_parameters', '~> 0.1.5'
 
 gem 'mongoid', '~> 2.5.1'
