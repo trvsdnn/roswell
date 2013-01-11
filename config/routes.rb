@@ -1,4 +1,5 @@
 Roswell::Application.routes.draw do
+
   get 'signup', :to => 'users#new'
   get 'login', :to => 'sessions#new'
   get 'logout', :to => 'sessions#destroy'
@@ -11,7 +12,7 @@ Roswell::Application.routes.draw do
   delete '/favorites', :to => 'favorites#destroy'
 
   resources :sessions
-  resources :users
+  resources :users, only: [ :edit, :update ]
 
   namespace :accounts do
     resources :generic_accounts, :path => 'generic'
