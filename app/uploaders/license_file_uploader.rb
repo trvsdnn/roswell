@@ -12,7 +12,7 @@ class LicenseFileUploader < CarrierWave::Uploader::Base
   end
 
   def default_url
-    asset_path("fallback/" + [version_name, "default-photo.png"].compact.join('_'))
+    'http://d39ya49a1fwv14.cloudfront.net/wp-content/uploads/2013/01/HIMYM.jpg'
   end
 
 end
